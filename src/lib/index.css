@@ -1,0 +1,290 @@
+@theme inline {
+	/* Custom Values */
+	--breakpoint-xs: 480px;
+
+	/* Fonts */
+	--font-sans:
+		ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+		'Noto Color Emoji';
+	--font-sans--font-feature-settings: 'calt' 0;
+
+	--font-sans-hero:
+		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+	--font-mono:
+		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+		monospace;
+
+	/* Typography  */
+	--text-display: var(--text-3xl);
+	--text-display--line-height: 1;
+	--text-display--font-weight: 600;
+
+	--text-headline: var(--text-2xl);
+	--text-headline--line-height: 1;
+	--text-headline--font-weight: 600;
+
+	--text-title: var(--text-lg);
+	--text-title--line-height: 1;
+	--text-title--font-weight: 500;
+
+	--text-body: var(--text-base);
+	--text-body--font-weight: 400;
+
+	--text-label: var(--text-base);
+	--text-label--line-height: 1;
+	--text-label--font-weight: 500;
+
+	--text-label-sm: var(--text-sm);
+	--text-label-sm--line-height: 1;
+	--text-label-sm--font-weight: 500;
+
+	/* Colors */
+	--color-*: initial;
+	--color-transparent: transparent;
+	--color-current-color: currentColor;
+	--color-inherit: inherit;
+	--color-black: #000;
+	--color-white: #fff;
+
+	--color-primary: var(--role-primary);
+	--color-primary-hover: var(--role-primary-hover);
+	--color-on-primary: var(--role-on-primary);
+	--color-primary-container: var(--role-primary-container);
+	--color-on-primary-container: var(--role-on-primary-container);
+
+	--color-error: var(--role-error);
+	--color-on-error: var(--role-on-error);
+	--color-error-container: var(--role-error-container);
+	--color-on-error-container: var(--role-on-error-container);
+
+	--color-success: var(--role-success);
+	--color-on-success: var(--role-on-success);
+	--color-success-container: var(--role-success-container);
+	--color-on-success-container: var(--role-on-success-container);
+
+	--color-destructive: var(--role-destructive);
+	--color-on-destructive: var(--role-on-destructive);
+	--color-destructive-container: var(--role-destructive-container);
+	--color-on-destructive-container: var(--role-on-destructive-container);
+
+	--color-warning: var(--role-warning);
+	--color-on-warning: var(--role-on-warning);
+	--color-warning-container: var(--role-warning-container);
+	--color-on-warning-container: var(--role-on-warning-container);
+
+	--color-shadow: oklch(0 0 0);
+	--color-scrim: oklch(0 0 0 / 0.5);
+
+	--color-outline: var(--role-outline);
+	--color-outline-variant: var(--role-outline-variant);
+	--color-surface: var(--role-surface);
+	--color-on-surface: var(--role-on-surface);
+	--color-on-surface-variant: var(--role-on-surface-variant);
+	--color-muted: var(--role-on-surface-variant);
+	--color-surface-container-lowest: var(--role-surface-container-lowest);
+	--color-surface-container-low: var(--role-surface-container-low);
+	--color-surface-container: var(--role-surface-container);
+	--color-surface-container-high: var(--role-surface-container-high);
+	--color-surface-container-highest: var(--role-surface-container-highest);
+	--color-background: var(--role-background);
+	--color-on-background: var(--role-on-background);
+}
+
+/* Custom variant for dark mode detection */
+@custom-variant dark (&:where([data-scheme=dark], [data-scheme=dark] *));
+
+@layer base {
+	:root {
+		/* Defaults to Vaulta colors (Blue brand color) */
+		--theme-seed: #2e3bff;
+
+		--error-hue: 27;
+		--success-hue: 152;
+		--destructive-hue: 53;
+		--warning-hue: 85; /* Yellow hue for warnings */
+
+		/* Primary Roles (Derived from Blue Seed) */
+		--role-primary: oklch(from var(--theme-seed) 0.4 c h);
+		--role-primary-hover: oklch(from var(--theme-seed) 0.5 c h);
+		--role-on-primary: oklch(from var(--theme-seed) 1 0 h);
+		--role-primary-container: oklch(from var(--theme-seed) 0.9 0.086 h);
+		--role-on-primary-container: oklch(from var(--theme-seed) 0.218 0.085 h);
+
+		/* Error Roles */
+		--role-error: oklch(0.51 0.1927 var(--error-hue));
+		--role-on-error: oklch(1 0 var(--error-hue));
+		--role-error-container: oklch(0.92 0.042 var(--error-hue));
+		--role-on-error-container: oklch(0.42 0.17 var(--error-hue));
+
+		/* Success Roles */
+		--role-success: oklch(0.51 0.1927 var(--success-hue));
+		--role-on-success: oklch(1 0 var(--success-hue));
+		--role-success-container: oklch(0.92 0.042 var(--success-hue));
+		--role-on-success-container: oklch(0.42 0.17 var(--success-hue));
+
+		/* Destructive Roles */
+		--role-destructive: oklch(0.51 0.1927 var(--destructive-hue));
+		--role-on-destructive: oklch(1 0 var(--destructive-hue));
+		--role-destructive-container: oklch(0.92 0.042 var(--destructive-hue));
+		--role-on-destructive-container: oklch(0.42 0.17 var(--destructive-hue));
+
+		/* WARNING Roles (Added/Fixed for Light Mode) */
+		--role-warning: oklch(0.51 0.1927 var(--warning-hue));
+		--role-on-warning: oklch(1 0 var(--warning-hue));
+		--role-warning-container: oklch(0.92 0.042 var(--warning-hue));
+		--role-on-warning-container: oklch(0.42 0.17 var(--warning-hue));
+
+		/* Outline/Surface Roles */
+		--role-outline-variant: oklch(from var(--color-primary) 0.57 0.08 h);
+		--role-outline: oklch(from var(--color-outline-variant) 0.83 0.04 h);
+
+		--role-surface: oklch(from var(--color-primary) 0.98 0.007 h);
+		--role-on-surface: oklch(from var(--color-surface) 0.22 c h);
+		--role-on-surface-variant: oklch(from var(--color-surface) 0.4 0.015 h);
+
+		/* Surface Containers are named by emphasis (contrast) relative to the Surface color */
+		--role-surface-container-lowest: oklch(from var(--color-surface) calc(l + 0.01) 0.01 h);
+		--role-surface-container-low: oklch(from var(--color-surface) calc(l - 0.01) 0.01 h);
+		--role-surface-container: oklch(from var(--color-surface) calc(l - 0.023) 0.01 h);
+		--role-surface-container-high: oklch(from var(--color-surface) calc(l - 0.05) 0.01 h);
+		--role-surface-container-highest: oklch(from var(--color-surface) calc(l - 0.1) 0.01 h);
+
+		/* In light mode, since the surfaces are near-white the background is derived from the surface */
+		--role-background: var(--color-surface-container-high);
+		--role-on-background: var(--color-on-surface);
+	}
+
+	[data-scheme='dark'] {
+		/* Primary Roles */
+		--role-primary: oklch(from var(--theme-seed) 0.82 c h);
+		--role-primary-hover: oklch(from var(--theme-seed) 0.9 c h);
+		--role-on-primary: oklch(from var(--theme-seed) 0.2 c h);
+
+		--role-primary-container: oklch(from var(--theme-seed) 0.39 0.086 h);
+		--role-on-primary-container: oklch(from var(--theme-seed) 0.9 0.085 h);
+
+		/* Error Roles */
+		--role-error: oklch(0.84 0.089 var(--error-hue));
+		--role-on-error: oklch(0.33 0.134 var(--error-hue));
+		--role-error-container: oklch(0.42 0.17 var(--error-hue));
+		--role-on-error-container: oklch(0.92 0.042 var(--error-hue));
+
+		/* Success Roles */
+		--role-success: oklch(0.84 0.089 var(--success-hue));
+		--role-on-success: oklch(0.33 0.134 var(--success-hue));
+		--role-success-container: oklch(0.42 0.17 var(--success-hue));
+		--role-on-success-container: oklch(0.92 0.042 var(--success-hue));
+
+		/* Destructive Roles */
+		--role-destructive: oklch(0.84 0.089 var(--destructive-hue));
+		--role-on-destructive: oklch(0.33 0.134 var(--destructive-hue));
+		--role-destructive-container: oklch(0.42 0.17 var(--destructive-hue));
+		--role-on-destructive-container: oklch(0.92 0.042 var(--destructive-hue));
+
+		/* Warning Roles */
+		--role-warning: oklch(0.84 0.089 var(--warning-hue));
+		--role-on-warning: oklch(0.33 0.134 var(--warning-hue));
+		--role-warning-container: oklch(0.42 0.17 var(--warning-hue));
+		--role-on-warning-container: oklch(0.92 0.042 var(--warning-hue));
+
+		/* Outline/Surface Roles */
+		--role-outline-variant: oklch(from var(--color-primary) 0.65 0.08 h);
+		--role-outline: oklch(from var(--color-outline-variant) 0.4 0.05 h);
+
+		--role-background: oklch(from var(--color-primary) 0.24 0.02 h);
+		--role-on-background: var(--color-on-surface);
+
+		/* Surfaces */
+		--role-surface: oklch(from var(--color-background) calc(l + 0.02) c h);
+		--role-on-surface: oklch(from var(--color-surface) 0.95 c h);
+		--role-on-surface-variant: oklch(from var(--color-surface) 0.8 calc(c * 2) h);
+
+		/* Surface Containers */
+		--role-surface-container-lowest: oklch(from var(--color-surface) calc(l - 0.01) c h);
+		--role-surface-container-low: oklch(from var(--color-surface) calc(l + 0.01) c h);
+		--role-surface-container: oklch(from var(--color-surface) calc(l + 0.023) c h);
+		--role-surface-container-high: oklch(from var(--color-surface) calc(l + 0.05) c h);
+		--role-surface-container-highest: oklch(from var(--color-surface) calc(l + 0.1) c h);
+	}
+
+	/* Base Styles: Inherited from the main file, applied only here once for consistency */
+	details > summary {
+		list-style: none;
+	}
+	details > summary::-webkit-details-marker {
+		display: none;
+	}
+
+	p,
+	li {
+		@apply text-body text-muted;
+	}
+
+	hr {
+		@apply text-outline;
+	}
+}
+
+/* Layout Utilities (Using @utility syntax) */
+
+@utility card {
+	@apply bg-surface grid gap-4 rounded-xl p-5;
+}
+
+@utility layout-switcher {
+	@apply flex flex-wrap gap-4;
+
+	& > * {
+		flex-grow: 1;
+		flex-basis: calc((var(--switcher-threshold) - 100%) * 999);
+	}
+}
+
+@utility layout-grid {
+	@apply grid gap-4;
+	grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-itemWidth), 100%), 1fr));
+}
+
+@utility subgrid {
+	@apply col-span-full grid grid-cols-subgrid;
+}
+
+/* Table Utilities (Using @utility syntax) */
+
+@utility table-styles {
+	:where(&) {
+		@apply w-full table-auto overflow-x-auto;
+
+		thead tr {
+			@apply bg-none;
+		}
+
+		tr,
+		.table-row-styles {
+			@apply table-row-border table-row-background;
+		}
+
+		th,
+		.table-head-styles {
+			@apply text-muted py-1.5 pr-2 pl-2 text-left text-base font-medium first:pl-0 last:pr-0;
+		}
+
+		td,
+		.table-cell-styles {
+			@apply py-3 pr-2 pl-2 text-base first:pl-0 last:pr-0;
+		}
+	}
+}
+
+@utility table-row-border {
+	@apply border-outline border-b last:border-none;
+}
+
+@utility table-row-background {
+	@apply odd:via-outline/10 data-[hover-effect=false]:odd:hover:via-outline-variant/10 hover:via-primary/5 data-[active=true]:via-primary/10 bg-linear-to-r from-transparent to-transparent data-[clickable=true]:cursor-pointer data-[hover-effect=false]:hover:via-transparent;
+}
+
+/* Components (Empty, ready for custom component definitions) */
+@layer components {
+}
