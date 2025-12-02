@@ -2,10 +2,18 @@
 	// SvelteKit imports
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
+	import Button from './Button.svelte';
 
 	// State variables for the header's behavior
-	let isCollapsed: boolean = false;
-	let isHeaderFixed: boolean = false;
+	let isCollapsed: boolean = $state(false);
+	let isHeaderFixed: boolean = $state(false);
+
+	// Navigation State
+	let isNavbarOpen = $state(false);
+
+	// DOM element references for click outside logic
+	let navbarContainer: HTMLElement;
+	let navbarToggler: HTMLButtonElement;
 
 	// Navigation links data
 	const navItems = [
@@ -22,22 +30,22 @@
 
 	/**
 	 * Handles the scroll event using requestAnimationFrame for performance.
-	 * Toggles isHeaderFixed (when scrollY > 0) and isCollapsed (when scrolling down past the threshold).
+	 * Toggles isHeaderFixed, isCollapsed, and closes the mobile navbar.
 	 */
 	function handleScroll(): void {
 		if (!ticking) {
 			requestAnimationFrame(() => {
 				const scrollY: number = window.scrollY;
 
-				// 1. Determine if the header should be fixed (always true after the initial scroll)
-				if (scrollY > 0) {
-					isHeaderFixed = true;
-				} else {
-					// Back at the very top of the page
-					isHeaderFixed = false;
+				// 1. 自动关闭导航栏：任何滑动行为都会关闭打开的移动导航栏
+				if (isNavbarOpen) {
+					isNavbarOpen = false;
 				}
 
-				// 2. Determine if the header should collapse (shrink height)
+				// 2. Determine if the header should be fixed (always true after the initial scroll)
+				isHeaderFixed = scrollY > 0;
+
+				// 3. Determine if the header should collapse (shrink height)
 				// Collapse only when scrolling down AND past the threshold
 				if (scrollY > lastScrollY && scrollY > COLLAPSE_THRESHOLD) {
 					isCollapsed = true;
@@ -47,7 +55,7 @@
 					isCollapsed = false;
 				}
 
-				// 3. Force uncollapsed when at the very top (scrollY <= 0)
+				// 4. Force uncollapsed when at the very top (scrollY <= 0)
 				if (scrollY <= 0) {
 					isCollapsed = false;
 				}
@@ -59,9 +67,39 @@
 		}
 	}
 
+	/**
+	 * Handles document clicks to close the navbar if the click is outside
+	 * the navigation container or the toggler button.
+	 */
+	function handleClickOutside(event: MouseEvent) {
+		if (!isNavbarOpen) {
+			return;
+		}
+
+		const target = event.target as Node;
+
+		// Check if the click is outside the nav container AND outside the toggler button
+		if (
+			navbarContainer &&
+			!navbarContainer.contains(target) &&
+			navbarToggler &&
+			!navbarToggler.contains(target)
+		) {
+			isNavbarOpen = false;
+		}
+	}
+
+	/**
+	 * Closes the navbar when a link inside it is clicked.
+	 */
+	function closeNavbar() {
+		if (isNavbarOpen) {
+			isNavbarOpen = false;
+		}
+	}
+
 	// Lifecycle hooks
 	onMount(() => {
-		// Only run client-side logic in the browser
 		if (browser) {
 			const initialScrollY = window.scrollY;
 
@@ -69,15 +107,19 @@
 			isHeaderFixed = initialScrollY > 0;
 			isCollapsed = initialScrollY > COLLAPSE_THRESHOLD;
 
-			// Attach the debounced scroll listener
+			// Attach scroll listener
 			window.addEventListener('scroll', handleScroll);
+
+			// Attach global click listener for click-outside
+			document.addEventListener('click', handleClickOutside);
 		}
 	});
 
 	onDestroy(() => {
-		// Clean up the event listener when the component is destroyed
 		if (browser) {
+			// Clean up listeners
 			window.removeEventListener('scroll', handleScroll);
+			document.removeEventListener('click', handleClickOutside);
 		}
 	});
 </script>
@@ -107,34 +149,44 @@
 				</a>
 			</div>
 
-			<div class="hidden h-full lg:flex items-center ml-12">
-				<nav>
-					<ul class="flex space-x-6 xl:space-x-8 h-full">
-						{#each navItems as item}
-							<li class="flex items-center h-full">
-								<a
-									href={item.href}
-									class="text-base hover:text-primary transition-colors py-1 flex items-center text-on-surface"
-								>
-									{item.name}
-								</a>
-							</li>
-						{/each}
-					</ul>
-				</nav>
-			</div>
+			<nav
+				bind:this={navbarContainer}
+				id="navbarCollapse"
+				class="absolute top-full right-4 w-full max-w-[270px] rounded-lg bg-black/80 py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none xl:px-6 {isNavbarOpen
+					? 'block'
+					: 'hidden'}"
+			>
+				<ul class="block lg:flex 2xl:ml-10">
+					{#each navItems as item (item.name)}
+						<li class="group relative">
+							<a
+								href={item.href}
+								onclick={closeNavbar}
+								class="mx-8 flex py-4 text-title text-white group-hover:text-primary lg:mx-3 lg:mr-3 lg:inline-flex lg:px-0 lg:py-6"
+							>
+								{item.name}
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</nav>
 		</div>
 
-		<ul class="flex items-center space-x-4">
-			<li>
-				<a
-					href="/"
-					aria-label="Contact us"
-					class="px-4 py-2 bg-black text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors flex items-center"
-				>
-					Contact
-				</a>
-			</li>
-		</ul>
+		<div class="flex flex-row items-center gap-4">
+			<Button variant="primary" className="h-9">Contact</Button>
+
+			<button
+				id="navbarToggler"
+				aria-label="Toggle Navigation"
+				onclick={() => (isNavbarOpen = !isNavbarOpen)}
+				class="rounded-lg px-3 py-1.5 ring-primary focus:ring-2 lg:hidden {isNavbarOpen
+					? 'navbarTogglerActive'
+					: ''}"
+			>
+				<span class="relative my-1.5 block h-0.5 w-[30px] bg-white"></span>
+				<span class="relative my-1.5 block h-0.5 w-[30px] bg-white"></span>
+				<span class="relative my-1.5 block h-0.5 w-[30px] bg-white"></span>
+			</button>
+		</div>
 	</div>
 </header>
