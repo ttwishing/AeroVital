@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ComparisonChart from '$lib/components/ComparisonChart.svelte';
 	import ExpertiseCard, { type Expertise } from '$lib/components/ExpertiseCard.svelte';
-	import ProductCard from '$lib/components/ProductCard.svelte';
+	import ProductCard, { type Product } from '$lib/components/ProductCard.svelte';
 	import '../app.css';
 
 	export const expertises: Expertise[] = [
@@ -9,33 +9,46 @@
 			title: 'Smart Agriculture',
 			subtitle:
 				'Automated spraying, seeding, and crop health monitoring. Reduce chemical usage and soil compaction using AI-driven drone technology.',
-			features: [
-				'Orchards & Vineyards Management',
-				'High-Precision RTK Navigation',
-				'Integrated Crop Health Analysis'
-			]
+			features: ['Orchards & Vineyards', 'High-Precision RTK']
 		},
 		{
 			title: 'Remote Inspection',
 			subtitle:
 				'Highway maintenance checks, powerline monitoring, and asset digitization in remote areas.',
-			features: [
-				'Powerline Safety',
-				'Optimized Route Planning',
-				'Real-Time Site Mapping',
-				'Last-Mile Delivery Solutions'
-			]
+			features: ['Powerline Safety', 'Road Asset Management']
 		},
 		{
-			title: 'Environmental Monitoring',
+			title: 'Forestry & Fire',
 			subtitle:
-				'Conducting high-resolution surveys for pollution detection, wildlife tracking, and infrastructure integrity assessment in remote or hazardous areas.',
-			features: [
-				'Air & Water Quality Sampling',
-				'Thermal Imaging for Leak Detection',
-				'Wildlife Population Census',
-				'Coastal Erosion Analysis'
-			]
+				'Rapid response surveillance, fire break planning, and post-disaster assessment for bushfire prone regions.',
+			features: ['Thermal Imaging', 'Rapid Deployment']
+		}
+	];
+
+	export const products: Product[] = [
+		{
+			img: '/images/aerovital_u60.jpg',
+			name: 'AeroVital U60',
+			descrition:
+				'Designed for large-scale orchards and broadacre farming. Features terrain following radar and obstacle avoidance.',
+			params: {
+				'Tank Capacity': '55 Liters',
+				'Spray Width': '8 - 12 Meters',
+				'Max Takeoff Weight': '106 KG',
+				Radar: 'IP67 Water/Dust'
+			}
+		},
+		{
+			img: '/images/aerovital_u40.jpg',
+			name: 'AeroVital U60',
+			descrition:
+				'Designed for large-scale orchards and broadacre farming. Features terrain following radar and obstacle avoidance.',
+			params: {
+				'Tank Capacity': '35 Liters',
+				'Spray Width': '6 - 10 Meters',
+				'Max Takeoff Weight': '72 KG',
+				Radar: 'Included'
+			}
 		}
 	];
 </script>
@@ -63,19 +76,56 @@
 	</div>
 </section>
 
-<section class="h-[640px] bg-white/3">
-	<ComparisonChart />
-</section>
-
-<section class="h-[640px]">
+<section class="bg-white/3">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
-		<h2 class="text-headline mt-6">Core Technology Platforms</h2>
-		<p class="mt-3">Robust, IP67-rated aerial systems designed for high-intensity work.</p>
-		<div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-			<ProductCard />
-			<ProductCard />
+		<div class="flex flex-col lg:flex-row">
+			<div
+				class="w-full lg:w-1/2 bg-black/10 p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6 shadow-2xl"
+			>
+				<div class="bg-success-container p-2 rounded-2xl inline-block">Case Study Showcase</div>
+				<h2 class=" text-headline">John Lemon Farm: Transforming Orchard Efficiency</h2>
+				<p>
+					Located in Gruyere, VIC, this 135-acre lemon orchard faced rising labor costs and soil
+					compaction issues. AeroVital implemented an automated U60 drone system to replace
+					traditional tractors.
+				</p>
+
+				<div class="grid grid-cols-2 gap-6">
+					<div class="border-l-4 border-success pl-4">
+						<p class="text-headline font-bold text-success">300%</p>
+						<p class="text-sm">Efficiency Gain</p>
+					</div>
+					<div class="border-l-4 border-success pl-4">
+						<p class="text-headline font-bold text-success">~65k</p>
+						<p class="text-sm text-gray-400" data-translate="case_stat2">
+							Initial Investment (AUD)
+						</p>
+					</div>
+					<div class="border-l-4 border-success pl-4">
+						<p class="text-headline font-bold text-success">4 Hrs</p>
+						<p class="text-sm text-gray-400" data-translate="case_stat3">Full Farm Spray Time</p>
+					</div>
+					<div class="border-l-4 border-success pl-4">
+						<p class="text-headline font-bold text-success">0</p>
+						<p class="text-sm text-gray-400" data-translate="case_stat4">Soil Compaction</p>
+					</div>
+				</div>
+			</div>
+			<div class="w-full lg:w-1/2">
+				<ComparisonChart />
+			</div>
 		</div>
 	</div>
 </section>
 
-<section class="h-[640px] bg-white/3"></section>
+<section class="">
+	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
+		<h2 class="text-headline mt-6">Core Technology Platforms</h2>
+		<p class="mt-3">Robust, IP67-rated aerial systems designed for high-intensity work.</p>
+		<div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+			{#each products as product}
+				<ProductCard {product} />
+			{/each}
+		</div>
+	</div>
+</section>

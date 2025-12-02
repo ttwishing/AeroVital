@@ -1,5 +1,11 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import UserRound from '@lucide/svelte/icons/user-round';
+	import Wrench from '@lucide/svelte/icons/wrench';
+	import MapPin from '@lucide/svelte/icons/map-pin';
+	import Mail from '@lucide/svelte/icons/mail';
+	import Phone from '@lucide/svelte/icons/phone';
+	import Button from './Button.svelte';
 
 	let currentYear = 2025;
 
@@ -8,7 +14,7 @@
 	});
 </script>
 
-<footer class="relative overflow-hidden">
+<footer class="relative overflow-hidden bg-white/3">
 	<div class="container mx-auto px-6 lg:px-12">
 		<div class="relative z-10 py-8 lg:py-12">
 			<div class="container mx-auto">
@@ -24,11 +30,64 @@
 							excellence and local Australian needs. Our mission is to empower farmers and
 							infrastructure managers with turnkey solutions.
 						</p>
+
+						<div class="mt-8">
+							<h4 class="text-lg font-bold mb-4">Leadership &amp; Support</h4>
+							<div class="flex items-start gap-4 mb-4">
+								<div class="p-3 rounded bg-black/10">
+									<UserRound class="size-4 text-success" />
+								</div>
+								<div>
+									<p class="font-bold text-on-background">Yin Zhao &amp; Yongmin Wang</p>
+									<p class="text-sm">Directors</p>
+									<p class="text-xs mt-1">Strategic Direction &amp; Operations</p>
+								</div>
+							</div>
+							<div class="flex items-start gap-4">
+								<div class="bg-black/10 p-3 rounded">
+									<Wrench class="text-success size-4" />
+								</div>
+								<div>
+									<p class="font-bold text-on-background">Technical Support Team</p>
+									<p class="text-sm">Brisbane Based</p>
+									<p class="text-xs mt-1">Maintenance, Training, and Parts Supply</p>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div
 						class="w-full lg:flex-1 bg-surface-container-low border border-outline/30 rounded-2xl p-3 lg:p-6"
 					>
-						<h2>Contact Us</h2>
+						<h2 class="mb-6">Contact Us</h2>
+						<div class="space-y-6">
+							<div class="flex items-start">
+								<MapPin class="mt-1 mr-4 text-success size-4" />
+								<div>
+									<p class="text-sm uppercase tracking-wider">Head Office</p>
+									<p class="text-on-background">
+										Level 1, 50 Commercial Road<br />Newstead, QLD 4006
+									</p>
+								</div>
+							</div>
+							<div class="flex items-start">
+								<Mail class="mt-1 mr-4 text-success size-4" />
+								<div>
+									<p class="text-sm text-gray-400 uppercase tracking-wider">Email</p>
+									<p class="text-on-background">info@aerovital.com.au</p>
+								</div>
+							</div>
+							<div class="flex items-start">
+								<Phone class="mt-1 mr-4 text-success size-4" />
+								<div>
+									<p class="text-sm uppercase tracking-wider">Support</p>
+									<p class="text-on-background">1300 AERO VITAL</p>
+								</div>
+							</div>
+						</div>
+						<div class="border-t border-outline/50 mt-6"></div>
+						<div class=" mt-6">
+							<Button variant="primary" className="w-full">Request a Consultation</Button>
+						</div>
 					</div>
 				</div>
 			</div>

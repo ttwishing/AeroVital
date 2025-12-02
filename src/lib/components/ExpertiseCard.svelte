@@ -15,7 +15,7 @@
 
 <div
 	class="w-full rounded-xl bg-white/10 overflow-hidden
-           transition-all duration-300 ease-out cursor-pointer
+           transition-all duration-1000 ease-out cursor-pointer
            hover:shadow-2xl hover:bg-white/20 hover:-translate-y-1"
 >
 	<div class="w-full bg-white/10 flex items-center justify-center aspect-2/1">

@@ -25,7 +25,6 @@
 
 	// 回调函数：由 observe Action 调用
 	function handleVisibility(isVisible: boolean) {
-		console.log("handleVisibility....................")
 		if (isVisible) {
 			// 只有当图表进入视口时，才允许其显示
 			isChartVisible = true;
@@ -35,39 +34,36 @@
 
 	// --- 1. 定义数据结构 ---
 	const data = {
-		labels: ['方案 A', '方案 B'], // X 轴（方案名称）
+		labels: ['Traditional Tractor', 'AeroVital U60'], // X 轴（方案名称）
 		datasets: [
 			{
-				label: '所需小时数',
-				data: [12, 4], // Y 轴（小时数）
+				label: 'Time to Complete: ',
+				data: [14, 4], // Y 轴（小时数）
 				backgroundColor: [
 					'rgba(239, 68, 68, 0.8)', // 方案 A: 红色
 					'rgba(16, 185, 129, 0.8)' // 方案 B: 绿色
 				],
 				borderColor: ['rgba(239, 68, 68, 1)', 'rgba(16, 185, 129, 1)'],
-				borderWidth: 1
+				borderWidth: 0,
+				barThickness: 50,
+				borderRadius: {
+					topLeft: 10, // 左上角圆角 10px
+					topRight: 10, // 右上角圆角 10px
+					bottomLeft: 0,
+					bottomRight: 0
+				}
 			}
 		]
 	};
 
-	// --- 2. 定义图表配置项 ---
 	const options = {
 		responsive: true,
 		maintainAspectRatio: false,
 		indexAxis: 'x' as const,
-
-		// 柱图原生动画是默认启用的，当 <canvas> 被渲染时自动播放
-
 		plugins: {
 			legend: { display: false },
-			title: {
-				display: true,
-				text: '方案耗时对比',
-				font: { size: 18 }
-			},
-			// Tooltip 悬停数据说明
 			tooltip: {
-				backgroundColor: 'rgba(0, 0, 0, 0.7)',
+				backgroundColor: 'rgba(0, 0, 0, 0.8)',
 				titleFont: { size: 14 },
 				bodyFont: { size: 14 },
 				callbacks: {
@@ -78,7 +74,7 @@
 						}
 						const hours = context.raw;
 						if (hours !== null && typeof hours === 'number') {
-							label += `${hours} 小时`;
+							label += `${hours} Hours`;
 						}
 						return label;
 					}
@@ -88,13 +84,15 @@
 
 		scales: {
 			x: {
-				title: { display: true, text: '方案 (Plan)' },
-				beginAtZero: true
+				title: { display: false, text: 'Plan' },
+				beginAtZero: true,
+				barPercentage: 0.2, // 柱子占据其类别宽度的 60%
+				categoryPercentage: 0.8 // 类别宽度占据可用空间的 80% (可选，但推荐)
 			},
 			y: {
-				title: { display: true, text: '小时 (H)' },
+				title: { display: true, text: 'Hours' },
 				beginAtZero: true,
-				max: 12,
+				max: 14,
 				ticks: { stepSize: 2 }
 			}
 		}
@@ -119,15 +117,32 @@
 	};
 </script>
 
+<!--
+    关键修改：
+    1. 根容器添加 h-full 和 flex flex-col，确保占据父容器的所有高度并启用 Flex 布局。
+    2. 移除 chart div 上的 h-full。
+    3. chart div 使用 flex-grow 和 mt-6，使其占据剩余空间，并提供顶部间距。
+    4. canvas 添加 w-full h-full 以填满其父 div。
+-->
 <div
-	class="p-6 bg-white rounded-xl shadow-2xl mx-auto"
-	style="max-width: 600px; height: 600px;"
+	class="p-6 bg-white/10 rounded-br-2xl rounded-bl-2xl round-tl-none rounded-tr-none lg:rounded-tl-none lg:rounded-bl-none lg:rounded-tr-2xl lg:round-br-2xl  shadow-2xl mx-auto text-left w-full h-full flex flex-col"
 	use:observe={observeOptions}
 >
-	{#if isChartVisible}
-		<canvas use:chartAction={chartConfig}></canvas>
-	{:else}
-		<!-- 占位符，确保滚动高度不变 -->
-		<div class="w-full h-full flex items-center justify-center text-gray-500">...</div>
-	{/if}
+	<!-- 头部文本：占据所需空间 -->
+	<div>
+		<h2 class="text-title">Efficiency Analysis: Tractor vs AeroVital U60</h2>
+		<p class="text-sm mt-3">Time required to spray 135 acres (John Lemon Farm Data)</p>
+	</div>
+
+	<!-- 图表容器：使用 mt-6 创建间距，使用 flex-grow 占据剩余高度 -->
+	<div class="mt-6 grow relative">
+		{#if isChartVisible}
+			<!-- canvas 必须填满 flex-grow 容器的全部尺寸 -->
+			<canvas class="w-full h-full" use:chartAction={chartConfig}></canvas>
+		{:else}
+			<div class="w-full h-full flex items-center justify-center text-gray-500">
+				Chart Loading...
+			</div>
+		{/if}
+	</div>
 </div>
