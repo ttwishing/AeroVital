@@ -12,15 +12,15 @@
 	let isNavbarOpen = $state(false);
 
 	// DOM element references for click outside logic
-	let navbarContainer: HTMLElement;
-	let navbarToggler: HTMLButtonElement;
+	let navbarContainer: HTMLElement | null = $state<HTMLElement | null>(null);
+	let navbarToggler: HTMLButtonElement | null = $state<HTMLButtonElement | null>(null);
 
 	// Navigation links data
 	const navItems = [
-		{ name: 'Solutions', href: '/' },
-		{ name: 'Success Stories', href: '/' },
-		{ name: 'Technology', href: '/' },
-		{ name: 'About us', href: '/' }
+		{ name: 'Solutions', href: '#solutions' },
+		{ name: 'Success Stories', href: '#success-stories' },
+		{ name: 'Technology', href: '#technology' },
+		{ name: 'About us', href: '/about-us' }
 	];
 
 	// Scroll handling variables

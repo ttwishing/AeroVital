@@ -208,6 +208,10 @@
 		--role-surface-container-highest: oklch(from var(--color-surface) calc(l + 0.1) c h);
 	}
 
+	html {
+		scroll-behavior: smooth;
+	}
+
 	/* Base Styles: Inherited from the main file, applied only here once for consistency */
 	details > summary {
 		list-style: none;

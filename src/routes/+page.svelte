@@ -60,7 +60,7 @@
 	></div>
 </section>
 
-<section class="">
+<section id="solutions" class="">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
 		<span class="text-base text-primary">Our Expertise</span>
 		<h2 class="text-headline mt-6">Specialized Industry Applications</h2>
@@ -76,7 +76,7 @@
 	</div>
 </section>
 
-<section class="bg-white/3">
+<section id="success-stories" class="bg-white/3">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
 		<div class="flex flex-col lg:flex-row">
 			<div
@@ -118,7 +118,7 @@
 	</div>
 </section>
 
-<section class="">
+<section id="technology" class="">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
 		<h2 class="text-headline mt-6">Core Technology Platforms</h2>
 		<p class="mt-3">Robust, IP67-rated aerial systems designed for high-intensity work.</p>
