@@ -20,7 +20,7 @@
 
 <div
 	class="group
-           opacity-0 translate-y-8 transition-all duration-500 ease-out delay-100 bg-white/5 rounded-2xl
+           opacity-0 translate-y-8 transition-all duration-1000 ease-out delay-100 bg-surface-container-high rounded-2xl
            relative"
 	use:observe={{
 		classToApply: classesToAdd,
@@ -40,7 +40,9 @@
 		<p class="mb-3">{product.descrition}</p>
 		<div class="grid grid-cols-2 gap-2">
 			{#each Object.entries(product.params) as [key, value]}
-				<div class="p-3 bg-white/2 border border-white/10 rounded-lg text-left">
+				<div
+					class="p-3 bg-surface-container-highest borderborder border-outline rounded-lg text-left"
+				>
 					<p class="text-sm">
 						{key}
 					</p>

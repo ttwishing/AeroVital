@@ -3,6 +3,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import Button from './Button.svelte';
+	import ThemeSwitcher from './ThemeSwitcher.svelte';
 
 	// State variables for the header's behavior
 	let isCollapsed: boolean = $state(false);
@@ -162,7 +163,7 @@
 							<a
 								href={item.href}
 								onclick={closeNavbar}
-								class="mx-8 flex py-4 text-title text-white group-hover:text-primary lg:mx-3 lg:mr-3 lg:inline-flex lg:px-0 lg:py-6"
+								class="mx-8 flex py-4 text-title text-on-background group-hover:text-primary lg:mx-3 lg:mr-3 lg:inline-flex lg:px-0 lg:py-6"
 							>
 								{item.name}
 							</a>
@@ -173,6 +174,7 @@
 		</div>
 
 		<div class="flex flex-row items-center gap-4">
+			<ThemeSwitcher />
 			<Button variant="primary" className="h-9">Contact</Button>
 
 			<button

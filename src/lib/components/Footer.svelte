@@ -14,7 +14,7 @@
 	});
 </script>
 
-<footer class="relative overflow-hidden bg-white/3">
+<footer class="relative overflow-hidden">
 	<div class="container mx-auto px-6 lg:px-12">
 		<div class="relative z-10 py-8 lg:py-12">
 			<div class="container mx-auto">
@@ -58,7 +58,7 @@
 					<div
 						class="w-full lg:flex-1 bg-surface-container-low border border-outline/30 rounded-2xl p-3 lg:p-6"
 					>
-						<h2 class="mb-6">Contact Us</h2>
+						<h2 class="text-title mb-6">Contact Us</h2>
 						<div class="space-y-6">
 							<div class="flex items-start">
 								<MapPin class="mt-1 mr-4 text-success size-4" />
@@ -92,7 +92,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="border-t border-outline/50">
+		<div class="border-t border-outline/30">
 			<div class="container relative z-10 px-5 mx-auto sm:px-7">
 				<div class="py-5 text-center">
 					<p class="text-sm">

@@ -7,18 +7,21 @@
 	export const expertises: Expertise[] = [
 		{
 			title: 'Smart Agriculture',
+			color: 'red',
 			subtitle:
 				'Automated spraying, seeding, and crop health monitoring. Reduce chemical usage and soil compaction using AI-driven drone technology.',
 			features: ['Orchards & Vineyards', 'High-Precision RTK']
 		},
 		{
 			title: 'Remote Inspection',
+			color: 'yellow',
 			subtitle:
 				'Highway maintenance checks, powerline monitoring, and asset digitization in remote areas.',
 			features: ['Powerline Safety', 'Road Asset Management']
 		},
 		{
 			title: 'Forestry & Fire',
+			color: 'green',
 			subtitle:
 				'Rapid response surveillance, fire break planning, and post-disaster assessment for bushfire prone regions.',
 			features: ['Thermal Imaging', 'Rapid Deployment']
@@ -40,7 +43,7 @@
 		},
 		{
 			img: '/images/aerovital_u40.jpg',
-			name: 'AeroVital U60',
+			name: 'AeroVital U40',
 			descrition:
 				'Designed for large-scale orchards and broadacre farming. Features terrain following radar and obstacle avoidance.',
 			params: {
@@ -60,7 +63,7 @@
 	></div>
 </section>
 
-<section id="solutions" class="">
+<section id="solutions" class="bg-surface-container-low">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
 		<span class="text-base text-primary">Our Expertise</span>
 		<h2 class="text-headline mt-6">Specialized Industry Applications</h2>
@@ -76,11 +79,11 @@
 	</div>
 </section>
 
-<section id="success-stories" class="bg-white/3">
+<section id="success-stories" class="">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
-		<div class="flex flex-col lg:flex-row">
+		<div class="flex flex-col lg:flex-row shadow-2xl">
 			<div
-				class="w-full lg:w-1/2 bg-black/10 p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6 shadow-2xl"
+				class="w-full lg:w-1/2 bg-surface-container p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6"
 			>
 				<div class="bg-success-container p-2 rounded-2xl inline-block">Case Study Showcase</div>
 				<h2 class=" text-headline">John Lemon Farm: Transforming Orchard Efficiency</h2>
@@ -118,7 +121,7 @@
 	</div>
 </section>
 
-<section id="technology" class="">
+<section id="technology" class="bg-surface-container-low">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
 		<h2 class="text-headline mt-6">Core Technology Platforms</h2>
 		<p class="mt-3">Robust, IP67-rated aerial systems designed for high-intensity work.</p>

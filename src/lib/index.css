@@ -89,6 +89,14 @@
 	--color-surface-container-highest: var(--role-surface-container-highest);
 	--color-background: var(--role-background);
 	--color-on-background: var(--role-on-background);
+
+	--color-soft-expert-red: var(--role-soft-expert-red);
+	--color-soft-expert-yellow: var(--role-soft-expert-yellow);
+	--color-soft-expert-green: var(--role-soft-expert-green);
+
+	--color-red: var(--role-red);
+	--color-yellow: var(--role-yellow);
+	--color-green: var(--role-green);
 }
 
 /* Custom variant for dark mode detection */
@@ -153,6 +161,10 @@
 		/* In light mode, since the surfaces are near-white the background is derived from the surface */
 		--role-background: var(--color-surface-container-high);
 		--role-on-background: var(--color-on-surface);
+
+		--role-red: oklch(0.55 0.15 20);
+		--role-green: oklch(0.55 0.15 140);
+		--role-yellow: oklch(0.55 0.15 85);
 	}
 
 	[data-scheme='dark'] {
@@ -206,6 +218,10 @@
 		--role-surface-container: oklch(from var(--color-surface) calc(l + 0.023) c h);
 		--role-surface-container-high: oklch(from var(--color-surface) calc(l + 0.05) c h);
 		--role-surface-container-highest: oklch(from var(--color-surface) calc(l + 0.1) c h);
+
+		--role-red: oklch(0.8 0.1 20);
+		--role-green: oklch(0.8 0.1 140);
+		--role-yellow: oklch(0.8 0.1 85);
 	}
 
 	html {
