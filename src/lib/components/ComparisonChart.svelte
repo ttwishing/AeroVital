@@ -125,7 +125,7 @@
     4. canvas 添加 w-full h-full 以填满其父 div。
 -->
 <div
-	class="p-6 bg-surface-container-highest rounded-br-2xl rounded-bl-2xl round-tl-none rounded-tr-none lg:rounded-tl-none lg:rounded-bl-none lg:rounded-tr-2xl lg:round-br-2xl mx-auto text-left w-full h-full flex flex-col"
+	class="p-6 mx-auto text-left w-full h-full flex flex-col"
 	use:observe={observeOptions}
 >
 	<!-- 头部文本：占据所需空间 -->

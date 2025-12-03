@@ -83,7 +83,7 @@
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
 		<div class="flex flex-col lg:flex-row shadow-2xl">
 			<div
-				class="w-full lg:w-1/2 bg-surface-container p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6"
+				class="w-full lg:w-1/2 bg-surface-container-highest p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6"
 			>
 				<div class="bg-success-container p-2 rounded-2xl inline-block">Case Study Showcase</div>
 				<h2 class=" text-headline">John Lemon Farm: Transforming Orchard Efficiency</h2>
@@ -114,7 +114,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="w-full lg:w-1/2">
+			<div class="w-full lg:w-1/2 bg-surface-container rounded-br-2xl rounded-bl-2xl round-tl-none rounded-tr-none lg:rounded-tl-none lg:rounded-bl-none lg:rounded-tr-2xl lg:round-br-2xl">
 				<ComparisonChart />
 			</div>
 		</div>
