@@ -45,7 +45,7 @@
 			img: '/images/aerovital_u40.jpg',
 			name: 'AeroVital U40',
 			descrition:
-				'Designed for large-scale orchards and broadacre farming. Features terrain following radar and obstacle avoidance.',
+				'Perfect for smaller plots, spot spraying, and complex terrain where agility is paramount.',
 			params: {
 				'Tank Capacity': '35 Liters',
 				'Spray Width': '6 - 10 Meters',
