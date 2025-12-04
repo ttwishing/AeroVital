@@ -3,7 +3,6 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import Button from './Button.svelte';
-	import ThemeSwitcher from './ThemeSwitcher.svelte';
 
 	// State variables for the header's behavior
 	let isCollapsed: boolean = $state(false);
@@ -11,6 +10,7 @@
 
 	// Navigation State
 	let isNavbarOpen = $state(false);
+	let currentActive: string = $state(''); // 当前活跃锚点 (e.g., '#solutions')
 
 	// DOM element references for click outside logic
 	let navbarContainer: HTMLElement | null = $state<HTMLElement | null>(null);
@@ -28,10 +28,60 @@
 	let ticking: boolean = false;
 	let lastScrollY: number = 0;
 	const COLLAPSE_THRESHOLD = 100;
+	const HEADER_OFFSET = 40; // header 高度偏移，用于 active 计算 (调整根据你的 h-16/h-12)
+
+	/**
+	 * 新增：处理导航点击 - 手动滚动 + 关闭菜单（不更新URL，避免带#xx）
+	 * @param event - 点击事件
+	 * @param href - 链接 href
+	 */
+	function handleNavClick(event: MouseEvent, href: string): void {
+		event.preventDefault(); // 阻止默认锚点跳转（避免URL自动带#xx）
+		closeNavbar(); // 关闭移动导航
+
+		if (href.startsWith('#')) {
+			// 内部锚点：手动平滑滚动
+			const targetElement = document.querySelector(href) as HTMLElement;
+			if (targetElement) {
+				const targetPosition = targetElement.offsetTop - HEADER_OFFSET; // 偏移避免 header 遮挡
+				window.scrollTo({
+					top: targetPosition,
+					behavior: 'smooth'
+				});
+			}
+			// 不更新 URL hash（保持不带#xx）
+			// 如果想带，取消注释下面：history.replaceState(null, null, href);
+		} else {
+			// 外部链接：正常跳转
+			window.location.href = href;
+		}
+	}
+
+	/**
+	 * 计算当前活跃锚点：遍历内部锚点，检查滚动位置是否在 section 范围内。
+	 */
+	function updateActiveSection(scrollY: number): void {
+		let newActive = '';
+		for (const item of navItems) {
+			if (!item.href.startsWith('#')) continue; // 只处理内部锚点
+
+			const targetElement = document.querySelector(item.href) as HTMLElement;
+			if (!targetElement) continue;
+
+			const elementTop = targetElement.offsetTop - HEADER_OFFSET;
+			const elementBottom = targetElement.offsetTop + targetElement.offsetHeight - HEADER_OFFSET;
+
+			if (scrollY >= elementTop && scrollY < elementBottom) {
+				newActive = item.href;
+				break; // 只匹配第一个
+			}
+		}
+		currentActive = newActive;
+	}
 
 	/**
 	 * Handles the scroll event using requestAnimationFrame for performance.
-	 * Toggles isHeaderFixed, isCollapsed, and closes the mobile navbar.
+	 * Toggles isHeaderFixed, isCollapsed, closes mobile navbar, and updates active section.
 	 */
 	function handleScroll(): void {
 		if (!ticking) {
@@ -60,6 +110,9 @@
 				if (scrollY <= 0) {
 					isCollapsed = false;
 				}
+
+				// 5. 更新活跃 section
+				updateActiveSection(scrollY);
 
 				lastScrollY = scrollY;
 				ticking = false;
@@ -107,6 +160,9 @@
 			// Initialize state based on the initial scroll position
 			isHeaderFixed = initialScrollY > 0;
 			isCollapsed = initialScrollY > COLLAPSE_THRESHOLD;
+
+			// 初始计算活跃 section
+			updateActiveSection(initialScrollY);
 
 			// Attach scroll listener
 			window.addEventListener('scroll', handleScroll);
@@ -162,8 +218,12 @@
 						<li class="group relative">
 							<a
 								href={item.href}
-								onclick={closeNavbar}
-								class="mx-8 flex py-4 text-title text-on-background group-hover:text-primary lg:mx-3 lg:mr-3 lg:inline-flex lg:px-0 lg:py-6"
+								onclick={(e) => handleNavClick(e, item.href)}
+								class="mx-8 flex py-4 text-title text-on-background group-hover:text-primary lg:mx-3
+								lg:mr-3 lg:inline-flex lg:px-0 lg:py-6 {item.href === currentActive
+									? 'text-primary'
+									: ''}"
+								class:active={item.href === currentActive}
 							>
 								{item.name}
 							</a>
