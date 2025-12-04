@@ -144,8 +144,9 @@
 				<a
 					href="/"
 					aria-label="AeroVital Logo"
-					class="text-headline tracking-tight text-on-surface"
+					class="text-title tracking-tight text-on-surface flex flex-row items-center"
 				>
+					<img src="/logo.png" alt="AeroVital" class="h-9 w-auto"/>
 					AeroVital
 				</a>
 			</div>
