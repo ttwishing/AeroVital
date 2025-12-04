@@ -40,7 +40,9 @@
 		<p class="mb-3">{product.descrition}</p>
 		<div class="grid grid-cols-2 gap-2">
 			{#each Object.entries(product.params) as [key, value]}
-				<div class="p-3 bg-surface-container-high borderborder border-outline rounded-lg text-left">
+				<div
+					class="px-3 py-2 bg-surface-container-high borderborder border-outline rounded-lg text-left"
+				>
 					<p class="text-sm">
 						{key}
 					</p>

@@ -88,7 +88,7 @@
 <section id="solutions">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
 		<span class="text-base text-primary font-bold">Our Expertise</span>
-		<h2 class="text-title mt-6">Specialized Industry Applications</h2>
+		<h2 class="text-headline mt-6">Specialized Industry Applications</h2>
 		<p class="mt-3">
 			We don't just sell hardware; we deliver operational workflows tailored to rugged Australian
 			environments.
@@ -103,11 +103,11 @@
 
 <section id="success-stories" class="bg-surface-low">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
-		<div class="flex flex-col lg:flex-row shadow-2xl">
+		<h2 class="text-headline">Case Study Showcase</h2>
+		<div class="flex flex-col lg:flex-row shadow-2xl mt-6">
 			<div
 				class="w-full lg:w-1/2 bg-surface-container-high p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6"
 			>
-				<h2 class="bg-green p-2 rounded-2xl inline-block">Case Study Showcase</h2>
 				<div class="text-title">John Lemon Farm: Transforming Orchard Efficiency</div>
 				<p class="text-sm">
 					Located in Gruyere, VIC, this 135-acre lemon orchard faced rising labor costs and soil
