@@ -63,10 +63,10 @@
 	></div>
 </section>
 
-<section id="solutions" class="bg-surface-container-low">
+<section id="solutions">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
-		<span class="text-base text-primary">Our Expertise</span>
-		<h2 class="text-headline mt-6">Specialized Industry Applications</h2>
+		<span class="text-base text-primary font-bold">Our Expertise</span>
+		<h2 class="text-title mt-6">Specialized Industry Applications</h2>
 		<p class="mt-3">
 			We don't just sell hardware; we deliver operational workflows tailored to rugged Australian
 			environments.
@@ -79,49 +79,49 @@
 	</div>
 </section>
 
-<section id="success-stories" class="">
+<section id="success-stories" class="bg-surface-low">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
 		<div class="flex flex-col lg:flex-row shadow-2xl">
 			<div
-				class="w-full lg:w-1/2 bg-surface-container-highest p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6"
+				class="w-full lg:w-1/2 bg-surface-container-high p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6"
 			>
-				<div class="bg-success-container p-2 rounded-2xl inline-block">Case Study Showcase</div>
-				<h2 class=" text-headline">John Lemon Farm: Transforming Orchard Efficiency</h2>
-				<p>
+				<h2 class="bg-green p-2 rounded-2xl inline-block">Case Study Showcase</h2>
+				<div class="text-title">John Lemon Farm: Transforming Orchard Efficiency</div>
+				<p class="text-sm">
 					Located in Gruyere, VIC, this 135-acre lemon orchard faced rising labor costs and soil
 					compaction issues. AeroVital implemented an automated U60 drone system to replace
 					traditional tractors.
 				</p>
 
 				<div class="grid grid-cols-2 gap-6">
-					<div class="border-l-4 border-success pl-4">
-						<p class="text-headline font-bold text-success">300%</p>
+					<div class="border-l-4 border-green pl-4">
+						<p class="text-headline font-bold text-green">300%</p>
 						<p class="text-sm">Efficiency Gain</p>
 					</div>
-					<div class="border-l-4 border-success pl-4">
-						<p class="text-headline font-bold text-success">~65k</p>
-						<p class="text-sm text-gray-400" data-translate="case_stat2">
-							Initial Investment (AUD)
-						</p>
+					<div class="border-l-4 border-green pl-4">
+						<p class="text-headline font-bold text-green">~65k</p>
+						<p class="text-sm" data-translate="case_stat2">Initial Investment (AUD)</p>
 					</div>
-					<div class="border-l-4 border-success pl-4">
-						<p class="text-headline font-bold text-success">4 Hrs</p>
-						<p class="text-sm text-gray-400" data-translate="case_stat3">Full Farm Spray Time</p>
+					<div class="border-l-4 border-green pl-4">
+						<p class="text-headline font-bold text-green">4 Hrs</p>
+						<p class="text-sm" data-translate="case_stat3">Full Farm Spray Time</p>
 					</div>
-					<div class="border-l-4 border-success pl-4">
-						<p class="text-headline font-bold text-success">0</p>
-						<p class="text-sm text-gray-400" data-translate="case_stat4">Soil Compaction</p>
+					<div class="border-l-4 border-green pl-4">
+						<p class="text-headline font-bold text-green">0</p>
+						<p class="text-sm" data-translate="case_stat4">Soil Compaction</p>
 					</div>
 				</div>
 			</div>
-			<div class="w-full lg:w-1/2 bg-surface-container rounded-br-2xl rounded-bl-2xl round-tl-none rounded-tr-none lg:rounded-tl-none lg:rounded-bl-none lg:rounded-tr-2xl lg:round-br-2xl">
+			<div
+				class="w-full lg:w-1/2 bg-surface-container-highest rounded-br-2xl rounded-bl-2xl round-tl-none rounded-tr-none lg:rounded-tl-none lg:rounded-bl-none lg:rounded-tr-2xl lg:round-br-2xl"
+			>
 				<ComparisonChart />
 			</div>
 		</div>
 	</div>
 </section>
 
-<section id="technology" class="bg-surface-container-low">
+<section id="technology" class="">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
 		<h2 class="text-headline mt-6">Core Technology Platforms</h2>
 		<p class="mt-3">Robust, IP67-rated aerial systems designed for high-intensity work.</p>

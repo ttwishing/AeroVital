@@ -132,7 +132,7 @@
 	class:bg-transparent={!isHeaderFixed}
 	class:fixed={isHeaderFixed}
 	class:top-0={isHeaderFixed}
-	class:bg-surface-container={isHeaderFixed}
+	class:bg-surface-deepest={isHeaderFixed}
 	class:shadow-lg={isHeaderFixed}
 	style:backdrop-filter={isHeaderFixed ? 'blur(8px)' : 'none'}
 	class:h-16={!isHeaderFixed || (isHeaderFixed && !isCollapsed)}
@@ -147,16 +147,6 @@
 					class="text-title tracking-tight text-on-surface flex flex-row items-center"
 				>
 					<img src="/logo_full.png" alt="AeroVital" class="h-7 w-auto" />
-				</a>
-			</div>
-
-			<div class="shrink-0 mr-6">
-				<a
-					href="/"
-					aria-label="AeroVital Logo"
-					class="text-title tracking-tight text-on-surface flex flex-row items-center"
-				>
-					<img src="/logo_full2.png" alt="AeroVital" class="h-7 w-auto" />
 				</a>
 			</div>
 

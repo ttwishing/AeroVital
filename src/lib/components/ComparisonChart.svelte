@@ -43,7 +43,7 @@
 					'rgba(239, 68, 68, 0.8)', // 方案 A: 红色
 					'rgba(16, 185, 129, 0.8)' // 方案 B: 绿色
 				],
-				borderColor: ['rgba(239, 68, 68, 1)', 'rgba(16, 185, 129, 1)'],
+				borderColor: ['rgba(239, 68, 68, 1)', 'rgba(34, 197, 94, 1)'],
 				borderWidth: 0,
 				barThickness: 50,
 				borderRadius: {
@@ -51,7 +51,12 @@
 					topRight: 10, // 右上角圆角 10px
 					bottomLeft: 0,
 					bottomRight: 0
-				}
+				},
+				hoverBackgroundColor: [
+					'rgba(239, 68, 68, 1)', // 红色全不透明
+					'rgba(34, 197, 94, 1)' // 绿色全不透明
+				],
+				hoverBorderWidth: 2 // dark下加粗边框，让小绿柱也易hover
 			}
 		]
 	};
@@ -124,10 +129,7 @@
     3. chart div 使用 flex-grow 和 mt-6，使其占据剩余空间，并提供顶部间距。
     4. canvas 添加 w-full h-full 以填满其父 div。
 -->
-<div
-	class="p-6 mx-auto text-left w-full h-full flex flex-col"
-	use:observe={observeOptions}
->
+<div class="p-6 mx-auto text-left w-full h-full flex flex-col" use:observe={observeOptions}>
 	<!-- 头部文本：占据所需空间 -->
 	<div>
 		<h2 class="text-title">Efficiency Analysis: Tractor vs AeroVital U60</h2>

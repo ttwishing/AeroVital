@@ -14,7 +14,7 @@
 	});
 </script>
 
-<footer class="relative overflow-hidden">
+<footer class="relative overflow-hidden bg-surface-low">
 	<div class="container mx-auto px-6 lg:px-12">
 		<div class="relative z-10 py-8 lg:py-12">
 			<div class="container mx-auto">
@@ -56,7 +56,7 @@
 						</div>
 					</div>
 					<div
-						class="w-full lg:flex-1 bg-surface-container-low border border-outline/30 rounded-2xl p-3 lg:p-6"
+						class="w-full lg:flex-1 bg-surface-container-high border border-outline/30 rounded-2xl p-3 lg:p-6"
 					>
 						<h2 class="text-title mb-6">Contact Us</h2>
 						<div class="space-y-6">

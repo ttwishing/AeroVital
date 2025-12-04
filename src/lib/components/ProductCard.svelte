@@ -20,7 +20,7 @@
 
 <div
 	class="group
-           opacity-0 translate-y-8 transition-all duration-1000 ease-out delay-100 bg-surface-container-high rounded-2xl
+           opacity-0 translate-y-8 transition-all duration-1000 ease-out delay-100 bg-surface rounded-2xl
            relative"
 	use:observe={{
 		classToApply: classesToAdd,
@@ -28,7 +28,7 @@
 		rootMargin: '0px 0px -15% 0px'
 	}}
 >
-	<div class="mb-6 overflow-hidden rounded-tl-2xl rounded-tr-2xl">
+	<div class="overflow-hidden rounded-tl-2xl rounded-tr-2xl">
 		<img
 			src={product.img}
 			alt={product.name}
@@ -40,9 +40,7 @@
 		<p class="mb-3">{product.descrition}</p>
 		<div class="grid grid-cols-2 gap-2">
 			{#each Object.entries(product.params) as [key, value]}
-				<div
-					class="p-3 bg-surface-container-highest borderborder border-outline rounded-lg text-left"
-				>
+				<div class="p-3 bg-surface-container-high borderborder border-outline rounded-lg text-left">
 					<p class="text-sm">
 						{key}
 					</p>
