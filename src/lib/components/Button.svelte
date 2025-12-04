@@ -1,47 +1,95 @@
 <script lang="ts">
-	import type { ComponentType, SvelteComponent } from 'svelte';
+	import ExternalLink from '@lucide/svelte/icons/external-link';
 	import type { Snippet } from 'svelte';
+	import type { HTMLButtonAttributes, HTMLLinkAttributes } from 'svelte/elements';
 
-	interface ButtonProps {
-		children: Snippet;
-		size?: 'sm' | 'md';
-		variant?: 'primary' | 'outline';
-		onClick?: () => void;
+	type HTMLAttributes = HTMLButtonAttributes & HTMLLinkAttributes;
+
+	export interface ButtonProps extends HTMLAttributes {
+		href?: string;
+		variant?: 'primary' | 'secondary' | 'text' | 'pill' | 'outlined' | 'destructive';
 		disabled?: boolean;
-		className?: string;
+		active?: boolean;
+		blank?: boolean;
+		class?: string;
+		size?: 'small' | 'normal';
+		children: Snippet;
+		onclick?: (event: MouseEvent) => void;
+		contentLayerClass?: string;
 	}
 
-	const {
-		children,
-		size = 'sm',
+	let {
+		onclick,
 		variant = 'primary',
-		onClick,
-		className = '',
-		disabled = false
+		size = 'normal',
+		active,
+		class: className,
+		disabled = false,
+		type = 'button',
+		...props
 	}: ButtonProps = $props();
 
-	const sizeClasses: Record<NonNullable<ButtonProps['size']>, string> = {
-		sm: 'px-4 py-3 text-base',
-		md: 'px-5 py-3.5 text-base'
-	};
+	const ariaRole = props.href ? undefined : 'button'; // undefined because anchor tag with role=link gives a warning
+	const ariaCurrent = props['aria-current'] || active === false ? undefined : true; // removes aria-current if active===false
+	const tag = props.href ? 'a' : 'button';
 
-	const variantClasses: Record<NonNullable<ButtonProps['variant']>, string> = {
-		primary:
-			'inline-flex grow rounded-lg bg-primary px-8 text-on-background  focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 disabled:bg-surface-container-highest disabled:text-on-surface',
-		outline:
-			'flex grow rounded-lg px-8  text-primary ring-2 ring-inset ring-outline focus-visible:outline-hidden focus-visible:ring-solar-500  hover:active:ring-outline  disabled:text-on-surface  disabled:hover:bg-transparent disabled:hover:ring-on-surface/12 disabled:ring-on-surface/12'
-	};
-
-	const buttonClasses = $derived(
-		`group/button relative cursor-pointer items-center justify-center text-center text-base font-medium text-nowrap transition-opacity disabled:cursor-not-allowed disabled:opacity-30 ${className} ${
-			sizeClasses[size]
-		} ${variantClasses[variant]}'}`
+	let linkProps = $derived.by(() =>
+		props.href && props.blank
+			? {
+					target: '_blank',
+					rel: 'noopener noreferrer'
+				}
+			: {}
 	);
+
+	const filledStyles = `inline-flex ${size === 'small' ? 'h-9' : 'h-12'} grow  rounded-lg bg-primary px-8  text-on-background  focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 disabled:bg-surface-container-highest disabled:text-on-surface`;
+
+	const secondaryFilledStyles =
+		'inline-flex h-12 grow rounded-lg bg-primary-container/60 dark:bg-primary-container/30 px-8 text-on-primary-container focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 disabled:bg-surface-container-highest disabled:text-on-surface';
+
+	const outlinedStyles =
+		' flex h-12 grow rounded-lg px-8  text-primary ring-2 ring-inset ring-outline  focus-visible:outline-hidden focus-visible:ring-solar-500  hover:active:ring-outline  disabled:text-on-surface  disabled:hover:bg-transparent disabled:hover:ring-on-surface/12 disabled:ring-on-surface/12  ';
+
+	const pillStyles =
+		' inline-flex h-10  rounded-full border-2 border-transparent px-5  leading-4  focus-visible:border-solar-500  focus-visible:outline-hidden aria-[current]:border-outline aria-[current]:focus-visible:border-solar-500';
+
+	const textStyles =
+		'inline-flex  h-10  rounded-lg px-3  text-primary   focus-visible:ring-inset focus-visible:ring-solar-500 focus-visible:outline-hidden focus-visible:ring  disabled:text-on-surface  disabled:hover:bg-transparent';
+
+	const destructiveStyles =
+		' inline-flex h-12 grow rounded-lg bg-destructive text-on-destructive dark:bg-destructive/10 dark:text-destructive px-8 focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 disabled:bg-surface-container-highest disabled:text-on-surface';
+
+	let styles = {
+		primary: filledStyles,
+		outlined: outlinedStyles,
+		secondary: secondaryFilledStyles,
+		pill: pillStyles,
+		text: textStyles,
+		destructive: destructiveStyles
+	};
 </script>
 
-<button class={buttonClasses} onclick={onClick} {disabled}>
+<svelte:element
+	this={tag}
+	class={`group/button relative cursor-pointer items-center justify-center text-center text-base font-medium text-nowrap transition-opacity disabled:cursor-not-allowed disabled:opacity-30 ${styles[variant]} ${className}`}
+	role={ariaRole}
+	aria-current={ariaCurrent}
+	{disabled}
+	{onclick}
+	{type}
+	{...props}
+	{...linkProps}
+>
 	<div
 		class="state-layer pointer-events-none absolute inset-0 rounded-[inherit] bg-current opacity-0 transition-opacity group-hover/button:opacity-8 group-focus-visible/button:opacity-10 group-active/button:group-hover/button:opacity-16 group-disabled/button:hidden"
 	></div>
-	{@render children()}
-</button>
+	<span
+		class={`content-layer pointer-events-none relative text-inherit ${props.contentLayerClass}`}
+	>
+		{@render props.children()}
+		<ExternalLink
+			data-external={/^https?:\/\//.test(props.href || '')}
+			class="mb-1 ml-1 hidden size-4 data-[external=true]:inline"
+		/>
+	</span>
+</svelte:element>

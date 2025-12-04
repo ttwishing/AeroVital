@@ -1,8 +1,10 @@
 <script lang="ts">
+	import Button from '$lib/components/Button.svelte';
 	import ComparisonChart from '$lib/components/ComparisonChart.svelte';
 	import ExpertiseCard, { type Expertise } from '$lib/components/ExpertiseCard.svelte';
 	import ProductCard, { type Product } from '$lib/components/ProductCard.svelte';
 	import '../app.css';
+	import ArrowRight from '@lucide/svelte/icons/arrow-right';
 
 	export const expertises: Expertise[] = [
 		{
@@ -30,7 +32,7 @@
 
 	export const products: Product[] = [
 		{
-			img: '/images/aerovital_u60.jpg',
+			img: '/images/aerovital_u60.png',
 			name: 'AeroVital U60',
 			descrition:
 				'Designed for large-scale orchards and broadacre farming. Features terrain following radar and obstacle avoidance.',
@@ -42,7 +44,7 @@
 			}
 		},
 		{
-			img: '/images/aerovital_u40.jpg',
+			img: '/images/aerovital_u40.png',
 			name: 'AeroVital U40',
 			descrition:
 				'Perfect for smaller plots, spot spraying, and complex terrain where agility is paramount.',
@@ -56,11 +58,31 @@
 	];
 </script>
 
-<section class="h-[760px] w-full z-800 relative">
+<section class="h-[520px] w-full z-800 relative">
 	<div
-		style="background-image: url('/images/banner_bg.jpg');"
-		class="banner-content theme-light swiper-lazy swiper-lazy-loaded relative h-full w-full pt-28 text-center text-white bg-center bg-no-repeat bg-[length:auto_800px] bg-gray-100 max-xl:pt-18 max-xl:bg-cover"
-	></div>
+		style="background-image: url('/images/banner.png');"
+		class="banner-content theme-light swiper-lazy swiper-lazy-loaded relative h-full w-full pt-28 text-center text-white bg-center bg-no-repeat bg-size-[auto_800px] bg-gray-100 max-xl:pt-18 max-xl:bg-cover"
+	>
+		<div
+			class="container px-6 lg:px-12 mx-auto flex flex-col items-start justify-center h-full gap-6"
+		>
+			<h1 class="text-4xl font-bold">
+				Intelligent Solutions for<br /><span class="mt-1 block">The Australian Horizon</span>
+			</h1>
+			<p class="text-on-background">
+				We provide complete aerial automation ecosystems for agriculture, infrastructure <br />
+				inspection, and emergency response. Rooted in Queensland, serving the nation.
+			</p>
+			<div>
+				<Button variant="primary">
+					<div class="flex flex-row items-center gap-1">
+						<div>Explore Solutions</div>
+						<ArrowRight class="size-5" />
+					</div>
+				</Button>
+			</div>
+		</div>
+	</div>
 </section>
 
 <section id="solutions">

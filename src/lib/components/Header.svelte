@@ -175,7 +175,7 @@
 
 		<div class="flex flex-row items-center gap-4">
 			<!-- <ThemeSwitcher /> -->
-			<Button variant="primary" className="h-9">Contact</Button>
+			<Button variant="primary" size="small">Contact</Button>
 
 			<button
 				id="navbarToggler"
