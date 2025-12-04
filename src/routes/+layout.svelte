@@ -10,7 +10,7 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 
-	<script>
+	<!-- <script>
 		(function () {
 			if (typeof window !== undefined) {
 				const storedTheme = localStorage.getItem('color-scheme');
@@ -21,7 +21,7 @@
 				if (!storedTheme) localStorage.setItem('color-scheme', theme);
 			}
 		})();
-	</script>
+	</script> -->
 </svelte:head>
 
 <div>

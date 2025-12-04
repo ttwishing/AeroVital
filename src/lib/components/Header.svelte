@@ -146,8 +146,7 @@
 					aria-label="AeroVital Logo"
 					class="text-title tracking-tight text-on-surface flex flex-row items-center"
 				>
-					<img src="/logo.png" alt="AeroVital" class="h-9 w-auto"/>
-					AeroVital
+					<img src="/logo_full.png" alt="AeroVital" class="h-7 w-auto" />
 				</a>
 			</div>
 
@@ -157,7 +156,7 @@
 					aria-label="AeroVital Logo"
 					class="text-title tracking-tight text-on-surface flex flex-row items-center"
 				>
-					<img src="/logo_full.png" alt="AeroVital" class="h-7 w-auto"/>
+					<img src="/logo_full2.png" alt="AeroVital" class="h-7 w-auto" />
 				</a>
 			</div>
 
@@ -185,7 +184,7 @@
 		</div>
 
 		<div class="flex flex-row items-center gap-4">
-			<ThemeSwitcher />
+			<!-- <ThemeSwitcher /> -->
 			<Button variant="primary" className="h-9">Contact</Button>
 
 			<button
