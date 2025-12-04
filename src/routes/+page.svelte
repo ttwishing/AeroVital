@@ -63,11 +63,14 @@
 
 <section class="h-[520px] w-full z-800 relative">
 	<div
-		style="background-image: url('/images/banner.png');"
-		class="banner-content theme-light swiper-lazy swiper-lazy-loaded relative h-full w-full pt-28 text-center text-white bg-center bg-no-repeat bg-size-[auto_800px] bg-gray-100 max-xl:pt-18 max-xl:bg-cover"
+		class="relative h-full w-full pt-28 text-center bg-center bg-no-repeat bg-size-[auto_800px] max-xl:pt-18 max-xl:bg-cover bg-[url('/images/banner.png')] max-md:bg-[url('/images/banner-mobile.png')]
+	"
 	>
 		<div
-			class="container px-6 lg:px-12 mx-auto flex flex-col items-start justify-center h-full gap-6"
+			class="absolute inset-0 hidden max-md:block pointer-events-none max-md:bg-linear-to-b max-md:from-black/50 max-md:to-black/80"
+		></div>
+		<div
+			class="relative container z-100 px-6 lg:px-12 mx-auto flex flex-col items-start justify-center h-full gap-6"
 		>
 			<h1 class="text-headline lg:text-4xl font-bold">
 				Intelligent Solutions for <br /><span class="mt-1 block">The Australian Horizon</span>
@@ -120,19 +123,19 @@
 
 				<div class="grid grid-cols-2 gap-6">
 					<div class="border-l-4 border-green pl-4">
-						<p class="text-headline font-bold text-green">300%</p>
+						<p class="text-headline font-semibold text-green">300%</p>
 						<p class="text-sm">Efficiency Gain</p>
 					</div>
 					<div class="border-l-4 border-green pl-4">
-						<p class="text-headline font-bold text-green">~65k</p>
+						<p class="text-headline font-semibold text-green">~65k</p>
 						<p class="text-sm" data-translate="case_stat2">Initial Investment (AUD)</p>
 					</div>
 					<div class="border-l-4 border-green pl-4">
-						<p class="text-headline font-bold text-green">4 Hrs</p>
+						<p class="text-headline font-semibold text-green">4 Hrs</p>
 						<p class="text-sm" data-translate="case_stat3">Full Farm Spray Time</p>
 					</div>
 					<div class="border-l-4 border-green pl-4">
-						<p class="text-headline font-bold text-green">0</p>
+						<p class="text-headline font-semibold text-green">0</p>
 						<p class="text-sm" data-translate="case_stat4">Soil Compaction</p>
 					</div>
 				</div>
