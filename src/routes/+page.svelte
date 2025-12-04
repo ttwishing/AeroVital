@@ -10,12 +10,14 @@
 		{
 			title: 'Smart Agriculture',
 			color: 'red',
+			icon: '/images/icon_feature_smart_agriculture.png',
 			subtitle:
 				'Automated spraying, seeding, and crop health monitoring. Reduce chemical usage and soil compaction using AI-driven drone technology.',
 			features: ['Orchards & Vineyards', 'High-Precision RTK']
 		},
 		{
 			title: 'Remote Inspection',
+			icon: '/images/icon_feature_remote_inspection.png',
 			color: 'yellow',
 			subtitle:
 				'Highway maintenance checks, powerline monitoring, and asset digitization in remote areas.',
@@ -23,6 +25,7 @@
 		},
 		{
 			title: 'Forestry & Fire',
+			icon: '/images/icon_feature_forestry_fire.png',
 			color: 'green',
 			subtitle:
 				'Rapid response surveillance, fire break planning, and post-disaster assessment for bushfire prone regions.',
@@ -86,7 +89,7 @@
 </section>
 
 <section id="solutions">
-	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
+	<div class="container mx-auto text-center px-6 lg:px-12 py-12">
 		<span class="text-base text-primary font-bold">Our Expertise</span>
 		<h2 class="text-headline mt-6">Specialized Industry Applications</h2>
 		<p class="mt-3">
@@ -102,11 +105,11 @@
 </section>
 
 <section id="success-stories" class="bg-surface-low">
-	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
+	<div class="container mx-auto text-center px-6 lg:px-12 py-12">
 		<h2 class="text-headline">Case Study Showcase</h2>
 		<div class="flex flex-col lg:flex-row border-2 border-outline/30 rounded-2xl mt-6">
 			<div
-				class="w-full lg:w-1/2 p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6"
+				class="w-full bg-surface-deep lg:w-1/2 p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6"
 			>
 				<h3 class="text-title">John Lemon Farm: Transforming Orchard Efficiency</h3>
 				<p class="text-sm">
@@ -135,7 +138,7 @@
 				</div>
 			</div>
 			<div
-				class="w-full lg:w-1/2 bg-surface-container rounded-br-2xl rounded-bl-2xl round-tl-none rounded-tr-none lg:rounded-tl-none lg:rounded-bl-none lg:rounded-tr-2xl lg:round-br-2xl"
+				class="w-full lg:w-1/2 bg-[#374251] rounded-br-2xl rounded-bl-2xl round-tl-none rounded-tr-none lg:rounded-tl-none lg:rounded-bl-none lg:rounded-tr-2xl lg:round-br-2xl"
 			>
 				<ComparisonChart />
 			</div>
@@ -144,7 +147,7 @@
 </section>
 
 <section id="technology" class="">
-	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
+	<div class="container mx-auto text-center px-6 lg:px-12 py-12">
 		<h2 class="text-headline mt-6">Core Technology Platforms</h2>
 		<p class="mt-3">Robust, IP67-rated aerial systems designed for high-intensity work.</p>
 		<div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">

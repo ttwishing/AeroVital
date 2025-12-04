@@ -40,10 +40,10 @@
 				label: 'Time to Complete: ',
 				data: [14, 4], // Y 轴（小时数）
 				backgroundColor: [
-					'rgba(239, 68, 68, 0.8)', // 方案 A: 红色
-					'rgba(16, 185, 129, 0.8)' // 方案 B: 绿色
+					'rgba(111, 136, 177, 0.8)', // 方案 A: 红色
+					'rgba(16, 185, 129, 1)' // 方案 B: 绿色
 				],
-				borderColor: ['rgba(239, 68, 68, 1)', 'rgba(34, 197, 94, 1)'],
+				borderColor: ['rgba(111, 136, 177, 1)', 'rgba(34, 197, 94, 1)'],
 				borderWidth: 0,
 				barThickness: 50,
 				borderRadius: {
@@ -53,7 +53,7 @@
 					bottomRight: 0
 				},
 				hoverBackgroundColor: [
-					'rgba(239, 68, 68, 1)', // 红色全不透明
+					'rgba(111, 136, 177, 1)', // 红色全不透明
 					'rgba(34, 197, 94, 1)' // 绿色全不透明
 				],
 				hoverBorderWidth: 2 // dark下加粗边框，让小绿柱也易hover

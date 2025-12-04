@@ -89,7 +89,7 @@
 
 @layer base {
 	:root {
-		--role-primary: oklch(0.62 0.188 260);
+		--role-primary: RGB(53 131 255);
 		--role-primary-hover: oklch(from var(--role-primary) 0.9 c h);
 		--role-on-primary: oklch(from var(--role-primary) 0.2 c h);
 		--role-primary-container: oklch(from var(--role-primary) 0.39 0.086 h);
@@ -99,16 +99,15 @@
 		--role-outline-variant: oklch(from var(--color-primary) 0.65 0.08 h);
 		--role-outline: oklch(from var(--color-outline-variant) 0.4 0.05 h);
 
-		--role-background: oklch(from var(--color-primary) 0.24 0.02 h);
-		--role-on-background: var(--color-on-surface);
+		--role-background: RGB(26, 31, 41);
+		--role-on-background: RGB(256, 256, 256);
 
-		--role-surface-deepest: oklch(from var(--role-background) calc(l - 0.05) c h);
-		--role-surface-deep: oklch(from var(--role-background) calc(l - 0.02) c h);
-		--role-surface-low: oklch(from var(--role-background) calc(l + 0.02) c h);
-		--role-surface-lightest: oklch(0.7 0.1 260);
+		--role-surface-deepest: RGB(17, 21, 29);
+		--role-surface-deep: RGB(32, 36, 45);
+		--role-surface-low: RGB(38, 44, 57);
 
 		/* Surfaces */
-		--role-surface: oklch(from var(--color-background) calc(l + 0.02) c h);
+		--role-surface: RGB(50, 59, 74);
 		--role-on-surface: oklch(from var(--color-surface) 0.95 c h);
 		--role-on-surface-variant: oklch(from var(--color-surface) 0.8 calc(c * 2) h);
 
@@ -120,7 +119,7 @@
 		--role-surface-container-highest: oklch(from var(--color-surface) calc(l + 0.1) c h);
 
 		--role-red: rgb(188, 78, 75);
-		--role-green: rgb(79, 158, 121);
+		--role-green: rgb(16, 185, 129);
 		--role-yellow: rgba(180, 120, 40);
 
 		--role-red-container: rgba(188, 78, 75, 0.1);
