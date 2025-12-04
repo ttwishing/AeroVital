@@ -67,7 +67,7 @@
 			class="container px-6 lg:px-12 mx-auto flex flex-col items-start justify-center h-full gap-6"
 		>
 			<h1 class="text-headline lg:text-4xl font-bold">
-				Intelligent Solutions for<br /><span class="mt-1 block">The Australian Horizon</span>
+				Intelligent Solutions for <br /><span class="mt-1 block">The Australian Horizon</span>
 			</h1>
 			<p class="text-on-background text-left">
 				We provide complete aerial automation ecosystems for agriculture, infrastructure <br />
@@ -108,7 +108,7 @@
 			<div
 				class="w-full lg:w-1/2 p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6"
 			>
-				<div class="text-title">John Lemon Farm: Transforming Orchard Efficiency</div>
+				<h3 class="text-title">John Lemon Farm: Transforming Orchard Efficiency</h3>
 				<p class="text-sm">
 					Located in Gruyere, VIC, this 135-acre lemon orchard faced rising labor costs and soil
 					compaction issues. AeroVital implemented an automated U60 drone system to replace

@@ -32,7 +32,7 @@
 						</p>
 
 						<div class="mt-8">
-							<h4 class="text-lg font-bold mb-4">Leadership &amp; Support</h4>
+							<h3 class="text-lg font-bold mb-4">Leadership &amp; Support</h3>
 							<div class="flex items-start gap-4 mb-4">
 								<div class="p-3 rounded bg-black/10">
 									<UserRound class="size-4 text-success" />

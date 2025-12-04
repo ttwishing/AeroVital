@@ -132,7 +132,7 @@
 <div class="p-6 mx-auto text-left w-full h-full flex flex-col" use:observe={observeOptions}>
 	<!-- 头部文本：占据所需空间 -->
 	<div>
-		<h2 class="text-title">Efficiency Analysis: Tractor vs AeroVital U60</h2>
+		<h3 class="text-title">Efficiency Analysis: Tractor vs AeroVital U60</h3>
 		<p class="text-sm mt-3">Time required to spray 135 acres (John Lemon Farm Data)</p>
 	</div>
 
