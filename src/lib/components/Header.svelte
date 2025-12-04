@@ -151,6 +151,16 @@
 				</a>
 			</div>
 
+			<div class="shrink-0 mr-6">
+				<a
+					href="/"
+					aria-label="AeroVital Logo"
+					class="text-title tracking-tight text-on-surface flex flex-row items-center"
+				>
+					<img src="/logo_full.png" alt="AeroVital" class="h-7 w-auto"/>
+				</a>
+			</div>
+
 			<nav
 				bind:this={navbarContainer}
 				id="navbarCollapse"
