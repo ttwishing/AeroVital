@@ -104,9 +104,9 @@
 <section id="success-stories" class="bg-surface-low">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12 lg:py-24">
 		<h2 class="text-headline">Case Study Showcase</h2>
-		<div class="flex flex-col lg:flex-row shadow-2xl mt-6">
+		<div class="flex flex-col lg:flex-row border-2 border-outline/30 rounded-2xl mt-6">
 			<div
-				class="w-full lg:w-1/2 bg-surface-container-high p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6"
+				class="w-full lg:w-1/2 p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6"
 			>
 				<div class="text-title">John Lemon Farm: Transforming Orchard Efficiency</div>
 				<p class="text-sm">
@@ -135,7 +135,7 @@
 				</div>
 			</div>
 			<div
-				class="w-full lg:w-1/2 bg-surface-container-highest rounded-br-2xl rounded-bl-2xl round-tl-none rounded-tr-none lg:rounded-tl-none lg:rounded-bl-none lg:rounded-tr-2xl lg:round-br-2xl"
+				class="w-full lg:w-1/2 bg-surface-container rounded-br-2xl rounded-bl-2xl round-tl-none rounded-tr-none lg:rounded-tl-none lg:rounded-bl-none lg:rounded-tr-2xl lg:round-br-2xl"
 			>
 				<ComparisonChart />
 			</div>
