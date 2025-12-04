@@ -36,18 +36,22 @@
 	 * @param href - 链接 href
 	 */
 	function handleNavClick(event: MouseEvent, href: string): void {
+		console.log('handleNavClick.................');
 		event.preventDefault(); // 阻止默认锚点跳转（避免URL自动带#xx）
 		closeNavbar(); // 关闭移动导航
 
 		if (href.startsWith('#')) {
-			// 内部锚点：手动平滑滚动
 			const targetElement = document.querySelector(href) as HTMLElement;
 			if (targetElement) {
-				const targetPosition = targetElement.offsetTop - HEADER_OFFSET; // 偏移避免 header 遮挡
-				window.scrollTo({
-					top: targetPosition,
-					behavior: 'smooth'
-				});
+				if (href === '#contact-us') {
+					window.scrollTo({
+						top: document.body.scrollHeight, // 直滚底
+						behavior: 'smooth'
+					});
+				} else {
+					const targetPosition = targetElement.offsetTop - HEADER_OFFSET;
+					window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+				}
 			}
 			// 不更新 URL hash（保持不带#xx）
 			// 如果想带，取消注释下面：history.replaceState(null, null, href);
@@ -220,9 +224,7 @@
 								href={item.href}
 								onclick={(e) => handleNavClick(e, item.href)}
 								class="mx-8 flex py-4 text-title text-on-background group-hover:text-primary lg:mx-3
-								lg:mr-3 lg:inline-flex lg:px-0 lg:py-6 {item.href === currentActive
-									? 'text-primary'
-									: ''}"
+								lg:mr-3 lg:inline-flex lg:px-0 lg:py-6 {item.href === currentActive ? 'text-primary' : ''}"
 								class:active={item.href === currentActive}
 							>
 								{item.name}
@@ -235,8 +237,13 @@
 
 		<div class="flex flex-row items-center gap-4">
 			<!-- <ThemeSwitcher /> -->
-			<Button variant="primary" size="small" href="#contact-us">Contact</Button>
-
+			<a
+				href="#contact-us"
+				onclick={(e) => handleNavClick(e, '#contact-us')}
+				class="inline-flex items-center justify-center h-9 grow rounded-lg bg-primary px-8 text-on-background text-sm font-medium text-nowrap shadow-sm hover:bg-primary/90 active:bg-primary/80 focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 focus-visible:ring-offset-2 disabled:bg-surface-container-highest disabled:text-on-surface disabled:cursor-not-allowed disabled:opacity-30 transition-all"
+			>
+				Contact
+			</a>
 			<button
 				id="navbarToggler"
 				aria-label="Toggle Navigation"
