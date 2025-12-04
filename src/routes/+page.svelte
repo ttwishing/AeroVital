@@ -66,15 +66,15 @@
 		<div
 			class="container px-6 lg:px-12 mx-auto flex flex-col items-start justify-center h-full gap-6"
 		>
-			<h1 class="text-4xl font-bold">
+			<h1 class="text-headline lg:text-4xl font-bold">
 				Intelligent Solutions for<br /><span class="mt-1 block">The Australian Horizon</span>
 			</h1>
-			<p class="text-on-background">
+			<p class="text-on-background text-left">
 				We provide complete aerial automation ecosystems for agriculture, infrastructure <br />
 				inspection, and emergency response. Rooted in Queensland, serving the nation.
 			</p>
 			<div>
-				<Button variant="primary">
+				<Button variant="primary" href="#solutions">
 					<div class="flex flex-row items-center gap-1">
 						<div>Explore Solutions</div>
 						<ArrowRight class="size-5" />
