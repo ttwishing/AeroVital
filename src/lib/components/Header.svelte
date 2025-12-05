@@ -1,8 +1,8 @@
 <script lang="ts">
 	// SvelteKit imports
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount, onDestroy, tick } from 'svelte';
 	import { browser } from '$app/environment';
-	import Button from './Button.svelte';
+	import { goto } from '$app/navigation';
 
 	// State variables for the header's behavior
 	let isCollapsed: boolean = $state(false);
@@ -16,12 +16,12 @@
 	let navbarContainer: HTMLElement | null = $state<HTMLElement | null>(null);
 	let navbarToggler: HTMLButtonElement | null = $state<HTMLButtonElement | null>(null);
 
-	// Navigation links data
+	// Navigation links data - 统一语义：内部用 #xx，外部用 /xx，标记 isInternal
 	const navItems = [
-		{ name: 'Solutions', href: '#solutions' },
-		{ name: 'Success Stories', href: '#success-stories' },
-		{ name: 'Technology', href: '#technology' },
-		{ name: 'About us', href: '/about-us' }
+		{ name: 'Solutions', href: '#solutions', isInternal: true },
+		{ name: 'Success Stories', href: '#success-stories', isInternal: true },
+		{ name: 'Technology', href: '#technology', isInternal: true },
+		{ name: 'About us', href: '/about-us', isInternal: false }
 	];
 
 	// Scroll handling variables
@@ -31,33 +31,53 @@
 	const HEADER_OFFSET = 40; // header 高度偏移，用于 active 计算 (调整根据你的 h-16/h-12)
 
 	/**
-	 * 新增：处理导航点击 - 手动滚动 + 关闭菜单（不更新URL，避免带#xx）
-	 * @param event - 点击事件
-	 * @param href - 链接 href
+	 * 滚动到目标位置（内部方法）
+	 * @param cleanHref - 清理后的锚点 (e.g., '#solutions')
 	 */
-	function handleNavClick(event: MouseEvent, href: string): void {
-		console.log('handleNavClick.................');
-		event.preventDefault(); // 阻止默认锚点跳转（避免URL自动带#xx）
+	async function scrollToTarget(cleanHref: string): Promise<void> {
+		if (!browser) return;
+		if (cleanHref === '#contact-us') {
+			window.scrollTo({
+				top: document.body.scrollHeight, // 直滚底
+				behavior: 'smooth'
+			});
+		} else {
+			const targetElement = document.querySelector(cleanHref) as HTMLElement;
+			if (targetElement) {
+				const targetPosition = targetElement.offsetTop - HEADER_OFFSET;
+				window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+			}
+		}
+	}
+
+	/**
+	 * 处理导航点击 - 手动滚动 + 关闭菜单（不更新URL，避免带#xx）
+	 * @param event - 点击事件
+	 * @param item - 导航项
+	 */
+	async function handleNavClick(event: MouseEvent, item: (typeof navItems)[0]): void {
+		if (!browser) return;
+		console.log('handleNavClick.................', item.name);
+		event.preventDefault(); // 阻止默认锚点跳转
 		closeNavbar(); // 关闭移动导航
 
-		if (href.startsWith('#')) {
-			const targetElement = document.querySelector(href) as HTMLElement;
-			if (targetElement) {
-				if (href === '#contact-us') {
-					window.scrollTo({
-						top: document.body.scrollHeight, // 直滚底
-						behavior: 'smooth'
-					});
-				} else {
-					const targetPosition = targetElement.offsetTop - HEADER_OFFSET;
-					window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-				}
+		if (item.isInternal) {
+			// 内部锚点链接（主页 sections）
+			const cleanHref = item.href; // 已 #xx
+			const currentPath = window.location.pathname;
+
+			if (currentPath === '/') {
+				// 已在主页：手动滚动，不更新 URL hash
+				await scrollToTarget(cleanHref);
+			} else {
+				// 非主页：导航到主页（无 hash）+ 手动滚动
+				await goto('/');
+				await tick(); // 确保 DOM 渲染完成
+				await scrollToTarget(cleanHref);
 			}
-			// 不更新 URL hash（保持不带#xx）
-			// 如果想带，取消注释下面：history.replaceState(null, null, href);
 		} else {
-			// 外部链接：正常跳转
-			window.location.href = href;
+			// 页面链接（如 /about-us）：使用 goto 导航
+			goto(item.href);
 		}
 	}
 
@@ -65,21 +85,30 @@
 	 * 计算当前活跃锚点：遍历内部锚点，检查滚动位置是否在 section 范围内。
 	 */
 	function updateActiveSection(scrollY: number): void {
+		if (!browser) return;
 		let newActive = '';
 		for (const item of navItems) {
-			if (!item.href.startsWith('#')) continue; // 只处理内部锚点
+			if (!item.isInternal) continue; // 只处理内部锚点
 
-			const targetElement = document.querySelector(item.href) as HTMLElement;
+			const selector = item.href; // 已 #xx
+			const targetElement = document.querySelector(selector) as HTMLElement;
 			if (!targetElement) continue;
 
 			const elementTop = targetElement.offsetTop - HEADER_OFFSET;
 			const elementBottom = targetElement.offsetTop + targetElement.offsetHeight - HEADER_OFFSET;
 
 			if (scrollY >= elementTop && scrollY < elementBottom) {
-				newActive = item.href;
+				newActive = item.href; // 保持原 href 格式 '#solutions' 用于匹配
 				break; // 只匹配第一个
 			}
 		}
+
+		// 如果没有匹配到主页 section，且当前在 about-us 页面，激活 'About us'
+		if (newActive === '' && window.location.pathname === '/about-us') {
+			const aboutItem = navItems.find((i) => i.name === 'About us');
+			newActive = aboutItem?.href || '';
+		}
+
 		currentActive = newActive;
 	}
 
@@ -88,6 +117,7 @@
 	 * Toggles isHeaderFixed, isCollapsed, closes mobile navbar, and updates active section.
 	 */
 	function handleScroll(): void {
+		if (!browser) return;
 		if (!ticking) {
 			requestAnimationFrame(() => {
 				const scrollY: number = window.scrollY;
@@ -130,7 +160,7 @@
 	 * the navigation container or the toggler button.
 	 */
 	function handleClickOutside(event: MouseEvent) {
-		if (!isNavbarOpen) {
+		if (!browser || !isNavbarOpen) {
 			return;
 		}
 
@@ -222,7 +252,7 @@
 						<li class="group relative">
 							<a
 								href={item.href}
-								onclick={(e) => handleNavClick(e, item.href)}
+								onclick={(e) => handleNavClick(e, item)}
 								class="mx-8 flex py-4 text-title text-on-background group-hover:text-primary lg:mx-3
 								lg:mr-3 lg:inline-flex lg:px-0 lg:py-6 {item.href === currentActive ? 'text-primary' : ''}"
 								class:active={item.href === currentActive}
@@ -239,7 +269,8 @@
 			<!-- <ThemeSwitcher /> -->
 			<a
 				href="#contact-us"
-				onclick={(e) => handleNavClick(e, '#contact-us')}
+				onclick={(e) =>
+					handleNavClick(e, { name: 'Contact', href: '#contact-us', isInternal: true })}
 				class="inline-flex items-center justify-center h-9 grow rounded-lg px-8 text-on-background text-sm font-medium text-nowrap shadow-sm hover:bg-primary/90 active:bg-primary/80 focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 focus-visible:ring-offset-2 disabled:bg-surface-container-highest disabled:text-on-surface disabled:cursor-not-allowed disabled:opacity-30 transition-all"
 				style="background-image: linear-gradient(to right, #1342FF, #0411A0);"
 			>

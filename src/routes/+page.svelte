@@ -3,7 +3,6 @@
 	import ComparisonChart from '$lib/components/ComparisonChart.svelte';
 	import ExpertiseCard, { type Expertise } from '$lib/components/ExpertiseCard.svelte';
 	import ProductCard, { type Product } from '$lib/components/ProductCard.svelte';
-	import '../app.css';
 	import ArrowRight from '@lucide/svelte/icons/arrow-right';
 
 	export const expertises: Expertise[] = [
