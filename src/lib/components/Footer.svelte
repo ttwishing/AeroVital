@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import UserRound from '@lucide/svelte/icons/user-round';
-	import Wrench from '@lucide/svelte/icons/wrench';
-	import MapPin from '@lucide/svelte/icons/map-pin';
-	import Mail from '@lucide/svelte/icons/mail';
-	import Phone from '@lucide/svelte/icons/phone';
+
+	import Ability from '$lib/assets/images/ability.svg';
+	import Email from '$lib/assets/images/email.svg';
+	import Group from '$lib/assets/images/group.svg';
+	import Location from '$lib/assets/images/location.svg';
+	import Ring from '$lib/assets/images/ring.svg';
 	import Button from './Button.svelte';
 
 	let currentYear = 2025;
@@ -35,7 +36,7 @@
 							<h3 class="text-lg font-bold mb-4">Leadership &amp; Support</h3>
 							<div class="flex items-start gap-4 mb-4">
 								<div class="p-3 rounded bg-black/10">
-									<UserRound class="size-4 text-success" />
+									<img src={Group} class="size-5 text-success" alt="Group" />
 								</div>
 								<div>
 									<p class="font-bold text-on-background">Yin Zhao &amp; Yongmin Wang</p>
@@ -45,7 +46,7 @@
 							</div>
 							<div class="flex items-start gap-4">
 								<div class="bg-black/10 p-3 rounded">
-									<Wrench class="text-success size-4" />
+									<img src={Ability} class="size-5 text-success" alt="Support" />
 								</div>
 								<div>
 									<p class="font-bold text-on-background">Technical Support Team</p>
@@ -62,7 +63,7 @@
 						<h2 class="text-title mb-6">Contact Us</h2>
 						<div class="space-y-6">
 							<div class="flex items-start">
-								<MapPin class="mt-1 mr-4 text-success size-4" />
+								<img src={Location} class="mt-1 mr-4 text-success size-4" alt="Email" />
 								<div>
 									<p class="text-sm uppercase tracking-wider">Head Office</p>
 									<p class="text-on-background">
@@ -71,14 +72,14 @@
 								</div>
 							</div>
 							<div class="flex items-start">
-								<Mail class="mt-1 mr-4 text-success size-4" />
+								<img src={Email} class="mt-1 mr-4 text-success size-4" alt="Email" />
 								<div>
 									<p class="text-sm text-gray-400 uppercase tracking-wider">Email</p>
 									<p class="text-on-background">info@aerovital.com.au</p>
 								</div>
 							</div>
 							<div class="flex items-start">
-								<Phone class="mt-1 mr-4 text-success size-4" />
+								<img src={Ring} class="mt-1 mr-4 text-success size-4" alt="Phone" />
 								<div>
 									<p class="text-sm uppercase tracking-wider">Support</p>
 									<p class="text-on-background">1300 AERO VITAL</p>
