@@ -67,7 +67,7 @@
 	"
 	>
 		<div
-			class="absolute inset-0 hidden max-md:block pointer-events-none max-md:bg-linear-to-b max-md:from-black/50 max-md:to-black/80"
+			class="absolute inset-0 hidden max-md:block pointer-events-none max-md:bg-linear-to-b max-md:from-black/40 max-md:to-black/60"
 		></div>
 		<div
 			class="relative container z-100 px-6 lg:px-12 mx-auto flex flex-col items-start justify-center h-full gap-6"
