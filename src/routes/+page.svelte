@@ -121,22 +121,22 @@
 					traditional tractors.
 				</p>
 
-				<div class="grid grid-cols-2 gap-6">
+				<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-6">
 					<div class="border-l-4 border-green pl-4">
-						<p class="text-headline font-semibold text-green">300%</p>
+						<p class="text-title lg:text-headline font-semibold text-green">300%</p>
 						<p class="text-sm">Efficiency Gain</p>
 					</div>
 					<div class="border-l-4 border-green pl-4">
-						<p class="text-headline font-semibold text-green">~65k</p>
-						<p class="text-sm" data-translate="case_stat2">Initial Investment (AUD)</p>
+						<p class="text-title lg:text-headline font-semibold text-green">~65k</p>
+						<p class="text-sm">Initial Investment (AUD)</p>
 					</div>
 					<div class="border-l-4 border-green pl-4">
-						<p class="text-headline font-semibold text-green">4 Hrs</p>
-						<p class="text-sm" data-translate="case_stat3">Full Farm Spray Time</p>
+						<p class="text-title lg:text-headline font-semibold text-green">4 Hrs</p>
+						<p class="text-sm">Full Farm Spray Time</p>
 					</div>
 					<div class="border-l-4 border-green pl-4">
-						<p class="text-headline font-semibold text-green">0</p>
-						<p class="text-sm" data-translate="case_stat4">Soil Compaction</p>
+						<p class="text-title lg:text-headline font-semibold text-green">0</p>
+						<p class="text-sm">Soil Compaction</p>
 					</div>
 				</div>
 			</div>
