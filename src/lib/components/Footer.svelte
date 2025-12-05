@@ -79,16 +79,23 @@
 								</div>
 							</div>
 							<div class="flex items-start">
-								<img src={Ring} class="mt-1 mr-4 text-success size-4" alt="Phone" />
-								<div>
-									<p class="text-sm uppercase tracking-wider">Support</p>
-									<p class="text-on-background">1300 AERO VITAL</p>
-								</div>
+								<a href="tel:1300237684825" class="flex items-start">
+									<img src={Ring} class="mt-1 mr-4 text-success size-4" alt="Phone" />
+									<div>
+										<p class="text-sm uppercase tracking-wider">Support</p>
+										<p class="text-on-background">1300 AERO VITAL</p>
+									</div>
+								</a>
 							</div>
 						</div>
 						<div class="border-t border-outline/50 mt-6"></div>
 						<div class=" mt-6">
-							<Button variant="gradient" class="w-full">Request a Consultation</Button>
+							<Button
+								variant="gradient"
+								class="w-full"
+								href="mailto:info@aerovital.com.au?subject=Consultation%20Request%20from%20Website&body=Dear%20AeroVital%20Solutions%20Team%2C%0A%0AI%20am%20interested%20in%20..."
+								>Request a Consultation</Button
+							>
 						</div>
 					</div>
 				</div>
