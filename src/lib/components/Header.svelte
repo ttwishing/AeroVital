@@ -55,9 +55,8 @@
 	 * @param event - 点击事件
 	 * @param item - 导航项
 	 */
-	async function handleNavClick(event: MouseEvent, item: (typeof navItems)[0]): void {
+	async function handleNavClick(event: MouseEvent, item: (typeof navItems)[0]) {
 		if (!browser) return;
-		console.log('handleNavClick.................', item.name);
 		event.preventDefault(); // 阻止默认锚点跳转
 		closeNavbar(); // 关闭移动导航
 
