@@ -80,7 +80,7 @@
 				inspection, and emergency response. Rooted in Queensland, serving the nation.
 			</p>
 			<div>
-				<Button variant="primary" href="#solutions">
+				<Button variant="gradient" href="#solutions">
 					<div class="flex flex-row items-center gap-1">
 						<div>Explore Solutions</div>
 						<ArrowRight class="size-5" />

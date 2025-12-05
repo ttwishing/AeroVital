@@ -240,7 +240,8 @@
 			<a
 				href="#contact-us"
 				onclick={(e) => handleNavClick(e, '#contact-us')}
-				class="inline-flex items-center justify-center h-9 grow rounded-lg bg-primary px-8 text-on-background text-sm font-medium text-nowrap shadow-sm hover:bg-primary/90 active:bg-primary/80 focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 focus-visible:ring-offset-2 disabled:bg-surface-container-highest disabled:text-on-surface disabled:cursor-not-allowed disabled:opacity-30 transition-all"
+				class="inline-flex items-center justify-center h-9 grow rounded-lg px-8 text-on-background text-sm font-medium text-nowrap shadow-sm hover:bg-primary/90 active:bg-primary/80 focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 focus-visible:ring-offset-2 disabled:bg-surface-container-highest disabled:text-on-surface disabled:cursor-not-allowed disabled:opacity-30 transition-all"
+				style="background-image: linear-gradient(to right, #1342FF, #0411A0);"
 			>
 				Contact
 			</a>

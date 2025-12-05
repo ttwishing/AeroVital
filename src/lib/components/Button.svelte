@@ -7,7 +7,7 @@
 
 	export interface ButtonProps extends HTMLAttributes {
 		href?: string;
-		variant?: 'primary' | 'secondary' | 'text' | 'pill' | 'outlined' | 'destructive';
+		variant?: 'primary' | 'secondary' | 'text' | 'pill' | 'outlined' | 'destructive' | 'gradient';
 		disabled?: boolean;
 		active?: boolean;
 		blank?: boolean;
@@ -42,6 +42,8 @@
 			: {}
 	);
 
+	const gradientStyles = `inline-flex ${size === 'small' ? 'h-9' : 'h-12'} grow rounded-lg px-8 text-on-background focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 disabled:bg-surface-container-highest disabled:text-on-surface`;
+
 	const filledStyles = `inline-flex ${size === 'small' ? 'h-9' : 'h-12'} grow  rounded-lg bg-primary px-8  text-on-background  focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 disabled:bg-surface-container-highest disabled:text-on-surface`;
 
 	const secondaryFilledStyles =
@@ -65,7 +67,8 @@
 		secondary: secondaryFilledStyles,
 		pill: pillStyles,
 		text: textStyles,
-		destructive: destructiveStyles
+		destructive: destructiveStyles,
+		gradient: gradientStyles
 	};
 </script>
 
@@ -79,6 +82,9 @@
 	{type}
 	{...props}
 	{...linkProps}
+	style={variant === 'gradient'
+		? 'background-image: linear-gradient(to right, #1342FF, #0411A0);'
+		: undefined}
 >
 	<div
 		class="state-layer pointer-events-none absolute inset-0 rounded-[inherit] bg-current opacity-0 transition-opacity group-hover/button:opacity-8 group-focus-visible/button:opacity-10 group-active/button:group-hover/button:opacity-16 group-disabled/button:hidden"

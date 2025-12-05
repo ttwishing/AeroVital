@@ -87,7 +87,7 @@
 						</div>
 						<div class="border-t border-outline/50 mt-6"></div>
 						<div class=" mt-6">
-							<Button variant="primary" class="w-full">Request a Consultation</Button>
+							<Button variant="gradient" class="w-full">Request a Consultation</Button>
 						</div>
 					</div>
 				</div>
