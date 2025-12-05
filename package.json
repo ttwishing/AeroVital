@@ -37,6 +37,8 @@
 	},
 	"dependencies": {
 		"chart.js": "^4.5.1",
-		"@lucide/svelte": "^0.525.0"
+		"@lucide/svelte": "^0.525.0",
+		"@pouchlab/svead": "^1.0.0",
+		"just-extend": "^6.2.0"
 	}
 }

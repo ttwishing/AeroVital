@@ -5,25 +5,34 @@
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 
-	let { children } = $props();
+	import extend from 'just-extend';
+	import { page } from '$app/stores';
+	import { Head, SchemaOrg, type SchemaOrgProps, type SeoConfig } from '@pouchlab/svead';
+	import type { LayoutData } from './$types.js';
+
+	let { children, data } = $props();
+	const layoutData = $derived(data as LayoutData);
+	const seo_config = $derived<SeoConfig>(
+		extend({}, data.baseMetaTags, $page.data?.pageMetaTags) as SeoConfig
+	);
+
+	const schema_org = $derived<SchemaOrgProps['schema'] | undefined>(
+		$page.data?.pageSchema || layoutData.baseSchema
+	);
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
 
-	<!-- <script>
-		(function () {
-			if (typeof window !== undefined) {
-				const storedTheme = localStorage.getItem('color-scheme');
-				const theme =
-					storedTheme ||
-					(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-				document.documentElement.setAttribute('data-scheme', theme);
-				if (!storedTheme) localStorage.setItem('color-scheme', theme);
-			}
-		})();
-	</script> -->
+	<link rel="canonical" href={layoutData.currentLangAbsoluteUrl} />
 </svelte:head>
+
+<Head {seo_config} />
+{#if schema_org}
+	{#key JSON.stringify(schema_org)}
+		<SchemaOrg schema={schema_org} />
+	{/key}
+{/if}
 
 <div>
 	<Header />
