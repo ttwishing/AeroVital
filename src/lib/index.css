@@ -126,12 +126,12 @@
 		--role-blue: rgb(96, 165, 250);
 		--role-green: rgb(74, 222, 128);
 		--role-purple: rgba(167, 139, 250);
-		--role-orange: rgb(251, 191, 36);
+		--role-orange: rgb(238, 186, 88);
 
 		--role-blue-container: rgba(96, 165, 250, 0.1);
 		--role-green-container: rgba(74, 222, 128, 0.1);
 		--role-purple-container: rgba(167, 139, 250, 0.1);
-		--role-orange-container: rgba(251, 191, 36, 0.1);
+		--role-orange-container: rgba(238, 186, 88, 0.1);
 	}
 
 	html {

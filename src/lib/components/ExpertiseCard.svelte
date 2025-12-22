@@ -29,7 +29,7 @@
            transition-all duration-500 ease-out cursor-pointer
            hover:bg-surface-highest hover:shadow-xl hover:-translate-y-1 h-full"
 >
-	<div class="w-full flex items-center justify-center aspect-2/1 shrink-0 bg-[#1F2531]">
+	<div class="w-full flex items-center justify-center aspect-2/1 shrink-0 bg-[#020C61]">
 		<img src={expertise.icon} alt={expertise.title} class="w-50 h-50 object-cover" />
 	</div>
 
