@@ -8,27 +8,53 @@
 	export const expertises: Expertise[] = [
 		{
 			title: 'Smart Agriculture',
-			color: 'red',
 			icon: '/images/icon_feature_smart_agriculture.png',
 			subtitle:
-				'Automated spraying, seeding, and crop health monitoring. Reduce chemical usage and soil compaction using AI-driven drone technology.',
-			features: ['Orchards & Vineyards', 'High-Precision RTK']
+				'The core of our current offering. Leveraging the U60\'s heavy-lift capability for broadacre and orchard applications.',
+			features: {
+				"Precision Spraying":"50-500μm centrifugal atomization for perfect coverage.",
+				"Orchard Management":"High-penetration airflow systems for dense canopies (e.g., Lemon/Citrus farms).",
+				"Multispectral Analysis":"Integration with mapping drones for targeted fertilizer application."
+			},
+			keyCapability:'High-Efficiency Spraying',
 		},
 		{
 			title: 'Remote Inspection',
 			icon: '/images/icon_feature_remote_inspection.png',
-			color: 'yellow',
 			subtitle:
-				'Highway maintenance checks, powerline monitoring, and asset digitization in remote areas.',
-			features: ['Powerline Safety', 'Road Asset Management']
+				'High-resolution asset digitization and monitoring. Keeping personnel safe while gathering critical data.',
+			features: {
+				"Infrastructure":"Power line and solar farm inspection using high-zoom optics.",
+				"Asset Integrity":"Thermal imaging to detect overheating components or structural fatigue.",
+				"Data Integration":"Automated report generation for maintenance teams."
+			},
+			keyCapability:'Safety & Precision',
+		},
+		{
+			title: 'Forestry & Environment',
+			icon: '/images/icon_feature_remote_inspection.png',
+			subtitle:
+				'Scalable solutions for large-scale environmental management and rehabilitation.',
+			features: {
+				'Seed Spreading':'Heavy-lift spreading for reforestation projects in difficult terrain.',
+				'Canopy Analysis':'LiDAR and multispectral monitoring of forest health.',
+				'Invasive Species Control':'Targeted spraying for weed management in sensitive ecosystems.',
+
+			},
+			keyCapability:'Large Scale Rehabilitation'
 		},
 		{
 			title: 'Forestry & Fire',
 			icon: '/images/icon_feature_forestry_fire.png',
-			color: 'green',
 			subtitle:
-				'Rapid response surveillance, fire break planning, and post-disaster assessment for bushfire prone regions.',
-			features: ['Thermal Imaging', 'Rapid Deployment']
+				'Rapid response capabilities for emergency services and private land protection.',
+			features: {
+				'Situational Awareness':'Real-time thermal feeds for hotspot detection.',
+				'Payload Delivery':'Transporting emergency supplies or fire retardants to inaccessible areas.',
+				'Post-Fire Assessment':'Quick mapping of damage to plan recovery efforts.',
+
+			},
+			keyCapability:'Rapid Response'
 		}
 	];
 
@@ -37,24 +63,28 @@
 			img: '/images/aerovital_u60.png',
 			name: 'AeroVital U60',
 			descrition:
-				'Designed for large-scale orchards and broadacre farming. Features terrain following radar and obstacle avoidance.',
+				'Heavy-Lift Agricultural & Industrial Platform',
 			params: {
-				'Tank Capacity': '55 Liters',
+				'Spray Tank Capacity': '55 Liters',
+				'Spread Tank Capacity': '80 Liters',
+				'Max Efficiency': '20 Hectares / Hour',
 				'Spray Width': '8 - 12 Meters',
-				'Max Takeoff Weight': '106 KG',
-				Radar: 'IP67 Water/Dust'
+				'Nozzle Type': 'Centrifugal (50-500μm)',
+				'Battery Life': '1000 Cycles Warranty'
 			}
 		},
 		{
 			img: '/images/aerovital_u40.png',
 			name: 'AeroVital U40',
 			descrition:
-				'Perfect for smaller plots, spot spraying, and complex terrain where agility is paramount.',
+				'Agile Precision Platform',
 			params: {
-				'Tank Capacity': '35 Liters',
+				'Spray Tank Capacity': '35 Liters',
+				'Spread Tank Capacity': '50 Liters',
+				'Max Efficiency': '12 Hectares / Hour',
 				'Spray Width': '6 - 10 Meters',
-				'Max Takeoff Weight': '72 KG',
-				Radar: 'Included'
+				'Nozzle Type': 'Centrifugal (50-500μm)',
+				'Battery Life': '1000 Cycles Warranty',
 			}
 		}
 	];
@@ -93,12 +123,11 @@
 <section id="solutions">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12">
 		<span class="text-base text-primary font-bold">Our Expertise</span>
-		<h2 class="text-headline mt-6">Specialized Industry Applications</h2>
+		<h2 class="text-headline mt-6">Beyond Agriculture</h2>
 		<p class="mt-3">
-			We don't just sell hardware; we deliver operational workflows tailored to rugged Australian
-			environments.
+			AeroVital applies its sovereign capabilities across multiple critical sectors.
 		</p>
-		<div class="mt-6 flex flex-col lg:flex-row gap-6 justify-between">
+		<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
 			{#each expertises as expertise}
 				<ExpertiseCard {expertise} />
 			{/each}
