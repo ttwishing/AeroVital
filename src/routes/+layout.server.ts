@@ -36,9 +36,9 @@ export const load: LayoutServerLoad = ({ url }) => {
 
 	// 基础 meta 标签（固定英文）
 	const baseMetaTags: SeoConfig = {
-		title: 'AeroVital Home', // 👈 替换为你的实际英文标题
-		description: 'Welcome to AeroVital - Innovative Solutions for Tomorrow.', // 👈 替换为实际描述
-		site_name: 'AeroVital', // 👈 替换为实际站点名
+		title: 'AeroVital | AeroVital | Australian Drone Technology & Solutions', // 👈 替换为你的实际英文标题
+		description: 'AeroVital offers U60 heavy-lift & U40 agile precision drones for Aussie ag and inspection. Localized R&D, advanced spraying, and full CASA compliance support.', // 👈 替换为实际描述
+		site_name: 'AeroVital Solutions', // 👈 替换为实际站点名
 		url: currentLangAbsoluteUrl,
 		language: 'en', // 固定为 en
 		open_graph_image: siteBaseUrl + 'images/og.png',

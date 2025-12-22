@@ -24,7 +24,7 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 
-	<link rel="canonical" href={layoutData.currentLangAbsoluteUrl} />
+	<!-- <link rel="canonical" href={layoutData.currentLangAbsoluteUrl} /> -->
 </svelte:head>
 
 <Head {seo_config} />
