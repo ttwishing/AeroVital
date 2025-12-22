@@ -65,6 +65,10 @@
 			name: 'AeroVital U60',
 			descrition:
 				'Heavy-Lift Agricultural & Industrial Platform',
+			main:{
+				'Max Payload':'60 KG',
+				'Radar':'Millimeter Wave',
+			},
 			params: {
 				'Spray Tank Capacity': '55 Liters',
 				'Spread Tank Capacity': '80 Liters',
@@ -79,6 +83,10 @@
 			name: 'AeroVital U40',
 			descrition:
 				'Agile Precision Platform',
+					main:{
+				'Max Payload':'40 KG',
+				'Radar':'Millimeter Wave',
+			},
 			params: {
 				'Spray Tank Capacity': '35 Liters',
 				'Spread Tank Capacity': '50 Liters',
@@ -129,14 +137,14 @@
 			AeroVital applies its sovereign capabilities across multiple critical sectors.
 		</p>
 		<div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-			{#each expertises as expertise}
-				<ExpertiseCard {expertise} />
+			{#each expertises as expertise, index}
+				<ExpertiseCard {expertise} {index} />
 			{/each}
 		</div>
 	</div>
 </section>
 
-<section id="products" class="">
+<section id="products" class="bg-surface-low">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12">
 		<h2 class="text-headline mt-6">Core Technology Platforms</h2>
 		<p class="mt-3">Robust, IP67-rated aerial systems designed for high-intensity work.</p>
@@ -148,7 +156,7 @@
 	</div>
 </section>
 
-<section id="data" class="bg-surface-low">
+<section id="data" class="">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12">
 		<h2 class="text-headline">The Business Case</h2>
 		<p class="mt-3">John Lemon Farm: Transforming Orchard Efficiency</p>
@@ -162,5 +170,28 @@
 				<ComparisonChartEfficiency />
 			</div>
 		</div>
+
+		<ul class="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-6">
+			<li class="flex flex-col bg-blue/8 rounded-lg text-blue py-2 gap-1 border-blue/10 border">
+				<span class="text-headline font-bold">~60kg</span>
+				<span>Max Payload</span>
+			</li>
+			<li class="flex flex-col bg-green/8 rounded-lg text-green py-2 gap-1 border-green/10 border">
+				<span class="text-headline font-bold">4 Hrs</span>
+				<span>Total Farm Coverage</span>
+			</li>
+			<li
+				class="flex flex-col bg-purple/8 rounded-lg text-purple py-2 gap-1 border-purple/10 border"
+			>
+				<span class="text-headline font-bold">IP67</span>
+				<span>Protection Level</span>
+			</li>
+			<li
+				class="flex flex-col bg-orange/8 rounded-lg text-orange py-2 gap-1 border-orange/10 border"
+			>
+				<span class="text-headline font-bold">-60%</span>
+				<span>Labor Reduction</span>
+			</li>
+		</ul>
 	</div>
 </section>

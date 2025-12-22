@@ -171,4 +171,7 @@
 			</div>
 		{/if}
 	</div>
+	<div class="text-sm text-muted mt-2 text-center">
+		<strong>Impact:</strong> Completes in 1 morning window vs 2 full days.
+	</div>
 </div>

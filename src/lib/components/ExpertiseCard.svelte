@@ -11,8 +11,17 @@
 
 	export interface Props {
 		expertise: Expertise;
+		index: number;
 	}
-	const { expertise, ...props }: Props = $props();
+	const { expertise, index, ...props }: Props = $props();
+
+	const themes = [
+        { text: 'text-blue', bg: 'bg-blue/10' }, // Index 0
+        { text: 'text-green',   bg: 'bg-green/10' },   // Index 1
+        { text: 'text-purple',  bg: 'bg-purple/10'},  // Index 2
+        { text: 'text-orange',     bg: 'bg-orange/10' }      // Index 3
+    ];
+	const theme = $derived(themes[index % 4]);
 </script>
 
 <div
@@ -33,7 +42,7 @@
 			<ul>
 				{#each Object.entries(expertise.features) as [key, value]}
 					<li class="flex flex-row items-start gap-3 mb-1">
-						<Check class="size-4 bold text-primary mt-0.5 shrink-0" />
+						<Check class="size-4 bold mt-0.5 shrink-0 {theme.text}" />
 						<div class="text-sm text-left">
 							<span class="text-on-background"><strong>{key}:</strong></span>
 							{value}
@@ -42,9 +51,9 @@
 				{/each}
 			</ul>
 		</div>
-		<div class="flex justify-between items-center">
+		<div class="flex justify-between items-center pt-4 border-t border-white/5">
 			<span class="text-muted text-xs"><strong>Key Capability</strong></span>
-			<div class="rounded-2xl bg-green/20 px-2 py-1 text-green font-bold text-xs">
+			<div class="rounded-lg px-2 py-1 font-bold text-xs {theme.bg} {theme.text}">
 				{expertise.keyCapability}
 			</div>
 		</div>

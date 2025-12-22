@@ -78,10 +78,12 @@
 	--color-red-container: var(--role-red-container);
 	--color-yellow-container: var(--role-yellow-container);
 	--color-green-container: var(--role-green-container);
+	--color-purple-container: var(--role-purple-container);
 
-	--color-red: var(--role-red);
-	--color-yellow: var(--role-yellow);
+	--color-blue: var(--role-blue);
 	--color-green: var(--role-green);
+	--color-purple: var(--role-purple);
+	--color-orange: var(--role-orange);
 }
 
 /* Custom variant for dark mode detection */
@@ -118,13 +120,16 @@
 		--role-surface-container-high: oklch(from var(--color-surface) calc(l + 0.05) c h);
 		--role-surface-container-highest: oklch(from var(--color-surface) calc(l + 0.1) c h);
 
-		--role-red: rgb(188, 78, 75);
-		--role-green: rgb(16, 185, 129);
-		--role-yellow: rgba(180, 120, 40);
+		
+		--role-blue: rgb(96, 165, 250);
+		--role-green: rgb(74, 222, 128);
+		--role-purple: rgba(167, 139, 250);
+		--role-orange: rgb(251, 191, 36);
 
-		--role-red-container: rgba(188, 78, 75, 0.1);
-		--role-green-container: rgba(79, 158, 121, 0.1);
-		--role-yellow-container: rgba(217, 119, 6, 0.1);
+		--role-blue-container: rgba(96, 165, 250, 0.1);
+		--role-green-container: rgba(74, 222, 128, 0.1);
+		--role-purple-container: rgba(167, 139, 250, 0.1);
+		--role-orange-container: rgba(251, 191, 36, 0.1);
 	}
 
 	html {

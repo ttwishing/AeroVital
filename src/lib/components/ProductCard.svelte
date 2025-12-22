@@ -5,6 +5,7 @@
 		img: string;
 		name: string;
 		descrition: string;
+		main: Record<string, string>;
 		params: Record<string, string>;
 	}
 
@@ -38,6 +39,17 @@
 	<div class="p-3 lg:p-6">
 		<h3 class="text-title mb-3">{product.name}</h3>
 		<p class="mb-6">{product.descrition}</p>
+		<div class="grid grid-cols-2 gap-3 mb-6">
+			{#each Object.entries(product.main) as [key, value]}
+				<div class="px-3 py-2 bg-white/2 border border-white/3 rounded-lg text-left">
+					<p class="text-sm">
+						{key}
+					</p>
+					<span class="text-title font-bold">{value}</span>
+				</div>
+			{/each}
+		</div>
+		<p class="text-left mb-3">Technical Specifications</p>
 		<div class="grid grid-cols-2 gap-3">
 			{#each Object.entries(product.params) as [key, value]}
 				<div class="px-3 py-2 bg-white/2 border border-white/3 rounded-lg text-left">

@@ -171,4 +171,8 @@
 			</div>
 		{/if}
 	</div>
+
+	<div class="text-sm text-muted mt-2 text-center">
+		<strong>Impact:</strong> ~300% efficiency increase over traditional methods.
+	</div>
 </div>
