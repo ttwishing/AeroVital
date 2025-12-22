@@ -21,7 +21,7 @@
 
 <div
 	class="group
-           opacity-0 translate-y-8 transition-all duration-1000 ease-out delay-100 bg-surface rounded-2xl
+           opacity-0 translate-y-8 transition-all duration-1000 ease-out delay-100 bg-surface rounded-xl
            relative"
 	use:observe={{
 		classToApply: classesToAdd,
@@ -29,7 +29,7 @@
 		rootMargin: '0px 0px -15% 0px'
 	}}
 >
-	<div class="overflow-hidden rounded-tl-2xl rounded-tr-2xl">
+	<div class="overflow-hidden rounded-tl-xl rounded-tr-xl">
 		<img
 			src={product.img}
 			alt={product.name}

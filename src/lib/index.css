@@ -61,7 +61,7 @@
 	--color-surface: var(--role-surface);
 	--color-on-surface: var(--role-on-surface);
 	--color-on-surface-variant: var(--role-on-surface-variant);
-	--color-muted: var(--role-on-surface-variant);
+	--color-muted: var(--role-muted);
 	--color-surface-container-lowest: var(--role-surface-container-lowest);
 	--color-surface-container-low: var(--role-surface-container-low);
 	--color-surface-container: var(--role-surface-container);
@@ -103,6 +103,8 @@
 
 		--role-background: RGB(26, 31, 41);
 		--role-on-background: RGB(256, 256, 256);
+
+		--role-muted: RGB(256, 256, 256, 0.8);
 
 		--role-surface-deepest: RGB(17, 21, 29);
 		--role-surface-deep: RGB(32, 36, 45);

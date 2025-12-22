@@ -1,62 +1,119 @@
 <script lang="ts">
 </script>
 
-<div class="z-800 pt-28 container mx-auto text-start px-12 lg:px-24 py-24 space-y-6">
-	<h1 class="text-headline lg:text-4xl font-bold text-center mb-12">About AeroVital Solutions</h1>
+<div class="z-800 pt-28 text-start px-6 lg:px-24 py-24 bg-white text-[#191919]">
+	<div class="container mx-auto">
+		<h1 class="text-headline lg:text-4xl font-bold text-center mb-6 lg:mb-12">About Us</h1>
+		<h2 class="text-xl font-semibold">
+			AeroVital is an Australian sovereign capability builder, driving the future of autonomous
+			systems across Agriculture, Forestry, Fire Management, and Remote Inspection.
+		</h2>
+		<p class="mt-3 text-[#333333]">
+			We go beyond hardware. By integrating advanced R&D, localized manufacturing, and comprehensive
+			operational support, we provide an end-to-end ecosystem that empowers Australian industries.
+			From advanced material science to regulatory compliance, AeroVital is committed to lifting the
+			standard of the local supply chain.
+		</p>
 
-	<h2 class="text-xl font-semibold">
-		Our Vision — Sustainable Agriculture Through Smarter Technology
-	</h2>
-	<p>
-		AeroVital Solutions was founded with a clear purpose: to accelerate the transformation of
-		Australia’s agricultural sector through automation and aerial innovation. Agriculture is
-		evolving faster than ever, and producers face increasing pressure from labour shortages,
-		environmental regulations, operational costs, and the need for precise, data-driven farming. We
-		believe technology should not replace people—it should empower them. Our goal is to provide
-		tools that enhance capability, reduce workload, and create a more sustainable future for
-		Australian farming.
-	</p>
+		<h2 class="text-xl font-semibold mt-8">Core Capabilities</h2>
 
-	<h2 class="text-xl font-semibold mt-8">
-		What We Do — Automated Drone Solutions Built for Australia
-	</h2>
-	<p>
-		We specialise in agricultural drone systems for spraying, spreading, mapping, and crop analysis.
-		By delivering turnkey solutions—from equipment and licensing compliance to onsite deployment and
-		training—we ensure that advanced drone technology becomes practical, safe, and accessible. Our
-		systems are engineered for harsh Australian conditions and provide measurable performance
-		improvements in broadacre, horticulture, pasture management, and regional environmental care.
-	</p>
+		<div class="bg-blue/8 rounded-xl p-3 lg:p-6 mt-6">
+			<h2 class="text-xl font-semibold">🎓 UniSQ Strategic Partnership</h2>
+			<p class="mt-3 text-[#333333]">
+				Advanced material science & structural engineering collaboration.
+			</p>
+			<p class="mt-3 text-[#333333]">
+				AeroVital maintains a deep strategic cooperation with the <strong
+					>University of Southern Queensland (UniSQ)</strong
+				>. Leveraging UniSQ's world-class advantages in
+				<strong>advanced composite materials</strong>, we are revolutionizing drone airframe design.
+			</p>
+			<p class="mt-3 text-[#333333]">
+				This partnership drives the advancement of drone body materials, ensuring our platforms are
+				lighter, stronger, and more durable. It is a commitment to integrating cutting-edge academic
+				research directly into industrial application, ensuring our airframes can withstand the
+				rigorous demands of the Australian environment.
+			</p>
+		</div>
 
-	<h2 class="text-xl font-semibold mt-8">Global Expertise with Local Support</h2>
-	<p>
-		AeroVital Solutions partners with leading global manufacturers to bring the most innovative
-		platforms to the Australian market, while maintaining local engineering insight, parts
-		availability, and Brisbane-based support. We recognise that adopting new technology is not just
-		a purchase—it is a long-term operational change. That's why our team provides end-to-end
-		lifecycle support, including deployment, maintenance, pilot training, regulatory guidance, and
-		operational optimisation. When customers invest in automation, we ensure they are backed by a
-		team that understands the land, the regulations, and the challenges unique to regional
-		Australia.
-	</p>
+		<div class="bg-blue/8 rounded-xl p-3 lg:p-6 mt-6">
+			<h3 class="text-xl font-semibold">⚙️ Local Manufacturing & Sovereignty</h3>
+			<p class="mt-3 text-[#333333]">Australian localized production & supply chain resilience.</p>
+			<p class="mt-3 text-[#333333]">
+				AeroVital is committed to <strong>Australian Localized Production</strong>. We are actively
+				boosting Australia's position in the global drone supply chain by manufacturing key
+				components domestically.
+			</p>
+			<p class="mt-3 text-[#333333]">
+				This localization strategy ensures supply chain resilience, faster support for our clients,
+				and higher quality control. We are not just importing technology; we are building a
+				sovereign capability that revitalizes local industry and provides security of supply for
+				Australian agriculture and infrastructure.
+			</p>
+		</div>
 
-	<h2 class="text-xl font-semibold mt-8">Innovation Driven by Real Industry Needs</h2>
-	<p>
-		Our R&D direction is shaped by conversations with growers, agronomists, contractors, and
-		regional councils. The solutions we champion are not driven by trends—they respond to real
-		onsite challenges such as precision application, accessibility, worker safety, environmentally
-		responsible chemical use, and operational uptime. From software-based flight automation to
-		AI-assisted field insights, our approach blends global innovation with practical on-ground
-		feedback.
-	</p>
+		<div class="bg-blue/8 rounded-xl p-3 lg:p-6 mt-6">
+			<h3 class="text-xl font-semibold">🧠 Adaptive Flight Algorithms</h3>
+			<p class="mt-3 text-[#333333]">
+				Flight controls specifically tuned for Australian environments.
+			</p>
+			<p class="mt-3 text-[#333333]">
+				We go beyond standard software. AeroVital's flight control algorithms are <strong
+					>deeply adapted</strong
+				>
+				through cooperation with local research institutes to suit specific Australian application scenarios.
+			</p>
+			<p class="mt-3 text-[#333333]">
+				From the gusty winds of coastal farms to the extreme heat of the interior, our flight
+				controllers are tuned to adapt to local topography and weather patterns. This ensures
+				superior stability, precision, and safety compared to generic, off-the-shelf solutions.
+			</p>
+		</div>
 
-	<h2 class="text-xl font-semibold mt-8">A Commitment to the Future of Australian Farming</h2>
-	<p>
-		With climate variability, limited resources, and an evolving global market, the future of
-		agriculture requires new ways of producing more with less impact. AeroVital Solutions is
-		committed to supporting a resilient, competitive, and sustainable agricultural industry by
-		making aerial automation part of everyday operations. We see a future where drone fleets work
-		alongside traditional machinery, where tasks that once took weeks can be completed in hours, and
-		where technology protects both the land and the people working it.
-	</p>
+		<div class="mt-8">
+			<h2 class="text-xl font-semibold">The "Total Solution" Approach</h2>
+			<p class="mt-3 text-[#333333]">
+				We provide a complete operational ecosystem, ensuring clients are supported from the first
+				consultation to daily operations.
+			</p>
+
+			<div
+				class="flex flex-col lg:flex-row items-center bg-blue/8 rounded-xl p-3 lg:p-6 mt-3 gap-6 justify-between"
+			>
+				<ur class="grow w-full lg:w-auto space-y-3 text-left">
+					<li class="flex flex-row items-center gap-2">
+						<div class="size-2 bg-blue rounded-full"></div>
+						<span class="text-[#333333]"
+							><strong>Regulatory Compliance:</strong> Full guidance on CASA regulations, ReOC, and RePL.</span
+						>
+					</li>
+					<li class="flex flex-row items-center gap-2">
+						<div class="size-2 bg-blue rounded-full"></div>
+						<span class="text-[#333333]">
+							<strong>Production Workflows:</strong> Optimizing on-site mixing and logistics.</span
+						>
+					</li>
+					<li class="flex flex-row items-center gap-2">
+						<div class="size-2 bg-blue rounded-full"></div>
+						<span class="text-[#333333]">
+							<strong>Safety Systems:</strong> Comprehensive Safety Management Systems (SMS).</span
+						>
+					</li>
+					<li class="flex flex-row items-center gap-2">
+						<div class="size-2 bg-blue rounded-full"></div>
+						<span class="text-[#333333]">
+							<strong>Training:</strong> Detailed operational training for pilots and ground crew.</span
+						>
+					</li>
+				</ur>
+
+				<div
+					class="flex flex-col items-center border-black/5 border rounded-2xl bg-black/3 p-6 gap-3"
+				>
+					<div class="text-[#191919] text-headline font-bold">100%</div>
+					<div class="text-[#666666]">Compliance Focus</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

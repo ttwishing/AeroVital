@@ -162,11 +162,11 @@
 		<p class="mt-3">John Lemon Farm: Transforming Orchard Efficiency</p>
 
 		<div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-			<div class="bg-[#374251] rounded-2xl">
+			<div class="bg-[#374251] rounded-xl">
 				<ComparisonChartTime />
 			</div>
 
-			<div class="bg-[#374251] rounded-2xl">
+			<div class="bg-[#374251] rounded-xl">
 				<ComparisonChartEfficiency />
 			</div>
 		</div>

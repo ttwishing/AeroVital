@@ -1,46 +1,44 @@
 <script lang="ts">
-	// SvelteKit imports
 	import { onMount, onDestroy, tick } from 'svelte';
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
-	// State variables for the header's behavior
+	// 状态变量
 	let isCollapsed: boolean = $state(false);
 	let isHeaderFixed: boolean = $state(false);
-
-	// Navigation State
 	let isNavbarOpen = $state(false);
-	let currentActive: string = $state(''); // 当前活跃锚点 (e.g., '#solutions')
+	let currentActive: string = $state(''); 
 
-	// DOM element references for click outside logic
+	// 衍生状态
+	let isAboutUs = $derived($page.url.pathname.startsWith('/about-us'));
+
+	// 关键：当 URL 路径变化时，自动更新活跃状态（Svelte 5 语法）
+	$effect(() => {
+		if (browser) {
+			updateActiveSection(window.scrollY);
+		}
+	});
+
 	let navbarContainer: HTMLElement | null = $state<HTMLElement | null>(null);
 	let navbarToggler: HTMLButtonElement | null = $state<HTMLButtonElement | null>(null);
 
-	// Navigation links data - 统一语义：内部用 #xx，外部用 /xx，标记 isInternal
 	const navItems = [
-    	{ name: 'Solutions Ecosystem', href: '/#solutions', isInternal: true },
-    	{ name: 'Product Specs', href: '/#products', isInternal: true },
-    	{ name: 'Data & ROI', href: '/#data', isInternal: true },
-    	{ name: 'About us', href: '/about-us', isInternal: false }
+		{ name: 'Solutions Ecosystem', href: '/#solutions', isInternal: true },
+		{ name: 'Product Specs', href: '/#products', isInternal: true },
+		{ name: 'Data & ROI', href: '/#data', isInternal: true },
+		{ name: 'About Us', href: '/about-us', isInternal: false }
 	];
 
-	// Scroll handling variables
 	let ticking: boolean = false;
 	let lastScrollY: number = 0;
 	const COLLAPSE_THRESHOLD = 100;
-	const HEADER_OFFSET = 40; // header 高度偏移，用于 active 计算 (调整根据你的 h-16/h-12)
+	const HEADER_OFFSET = 40; 
 
-	/**
-	 * 滚动到目标位置（内部方法）
-	 * @param cleanHref - 清理后的锚点 (e.g., '#solutions')
-	 */
 	async function scrollToTarget(cleanHref: string): Promise<void> {
 		if (!browser) return;
 		if (cleanHref === '#contact-us') {
-			window.scrollTo({
-				top: document.body.scrollHeight, // 直滚底
-				behavior: 'smooth'
-			});
+			window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 		} else {
 			const targetElement = document.querySelector(cleanHref) as HTMLElement;
 			if (targetElement) {
@@ -50,109 +48,76 @@
 		}
 	}
 
-	/**
-	 * 处理导航点击 - 手动滚动 + 关闭菜单（不更新URL，避免带#xx）
-	 * @param event - 点击事件
-	 * @param item - 导航项
-	 */
 	async function handleNavClick(event: MouseEvent, item: (typeof navItems)[0]) {
-    if (!browser) return;
-    
-    if (item.isInternal) {
-        event.preventDefault(); 
-        closeNavbar();
+		if (!browser) return;
+		if (item.isInternal) {
+			event.preventDefault(); 
+			isNavbarOpen = false;
+			const anchorId = item.href.includes('#') ? '#' + item.href.split('#')[1] : item.href;
+			const currentPath = window.location.pathname;
+			if (currentPath === '/') {
+				await scrollToTarget(anchorId);
+			} else {
+				await goto('/');
+				await tick();
+				setTimeout(() => scrollToTarget(anchorId), 100);
+			}
+		} else {
+			isNavbarOpen = false;
+			// 非内部链接交给 SvelteKit 正常跳转
+		}
+	}
 
-        // 提取 ID：从 "/#solutions" 提取出 "#solutions"
-        const anchorId = item.href.includes('#') ? '#' + item.href.split('#')[1] : item.href;
-        const currentPath = window.location.pathname;
-
-        if (currentPath === '/') {
-            await scrollToTarget(anchorId);
-        } else {
-            // 如果不在首页，先跳回首页
-            await goto('/');
-            // 这里的 tick 很重要，等待首页挂载后再滚动
-            await tick();
-            setTimeout(() => scrollToTarget(anchorId), 100); // 给一点点延迟确保渲染
-        }
-    } else {
-        // 正常页面跳转不需要 preventDefault
-        isNavbarOpen = false;
-    }
-}
-
-	/**
-	 * 计算当前活跃锚点：遍历内部锚点，检查滚动位置是否在 section 范围内。
-	 */
 	function updateActiveSection(scrollY: number): void {
-    if (!browser) return;
-    let newActive = '';
-    
-    // 如果在首页，才计算锚点高亮
-    if (window.location.pathname === '/') {
-        for (const item of navItems) {
-            if (!item.isInternal) continue;
-            
-            // 从 "/#solutions" 提取 "#solutions" 用作选择器
-            const selector = '#' + item.href.split('#')[1];
-            const targetElement = document.querySelector(selector) as HTMLElement;
-            
-            if (targetElement) {
-                const elementTop = targetElement.offsetTop - HEADER_OFFSET - 50; // 稍微提前一点激活
-                const elementBottom = targetElement.offsetTop + targetElement.offsetHeight - HEADER_OFFSET;
+		if (!browser) return;
+		let newActive = '';
+		
+		// 1. 如果在首页，计算锚点高亮
+		if ($page.url.pathname === '/') {
+			for (const item of navItems) {
+				if (!item.isInternal) continue;
+				const parts = item.href.split('#');
+				if (parts.length < 2) continue;
+				
+				const selector = '#' + parts[1];
+				const targetElement = document.querySelector(selector) as HTMLElement;
+				if (targetElement) {
+					const elementTop = targetElement.offsetTop - HEADER_OFFSET - 80;
+					const elementBottom = targetElement.offsetTop + targetElement.offsetHeight - HEADER_OFFSET;
+					if (scrollY >= elementTop && scrollY < elementBottom) {
+						newActive = item.href;
+						break;
+					}
+				}
+			}
+		} 
+		
+		// 2. 如果以上没匹配到（在其他页面），检查路径精确匹配
+		if (!newActive) {
+			const currentPath = $page.url.pathname;
+			const activeItem = navItems.find(i => i.href === currentPath || currentPath.startsWith(i.href + '/'));
+			if (activeItem) newActive = activeItem.href;
+		}
 
-                if (scrollY >= elementTop && scrollY < elementBottom) {
-                    newActive = item.href; // 匹配为 "/#solutions"
-                    break;
-                }
-            }
-        }
-    } else {
-        // 如果在 about-us 页面，直接激活 About us 项
-        const currentPath = window.location.pathname;
-        const activeItem = navItems.find(i => i.href === currentPath);
-        if (activeItem) newActive = activeItem.href;
-    }
+		currentActive = newActive;
+	}
 
-    currentActive = newActive;
-}
-
-	/**
-	 * Handles the scroll event using requestAnimationFrame for performance.
-	 * Toggles isHeaderFixed, isCollapsed, closes mobile navbar, and updates active section.
-	 */
 	function handleScroll(): void {
 		if (!browser) return;
 		if (!ticking) {
 			requestAnimationFrame(() => {
 				const scrollY: number = window.scrollY;
-
-				// 1. 自动关闭导航栏：任何滑动行为都会关闭打开的移动导航栏
-				if (isNavbarOpen) {
-					isNavbarOpen = false;
-				}
-
-				// 2. Determine if the header should be fixed (always true after the initial scroll)
+				if (isNavbarOpen) isNavbarOpen = false;
 				isHeaderFixed = scrollY > 0;
 
-				// 3. Determine if the header should collapse (shrink height)
-				// Collapse only when scrolling down AND past the threshold
 				if (scrollY > lastScrollY && scrollY > COLLAPSE_THRESHOLD) {
 					isCollapsed = true;
-				}
-				// Uncollapse when scrolling up AND back below the threshold
-				else if (scrollY < lastScrollY && scrollY < COLLAPSE_THRESHOLD) {
+				} else if (scrollY < lastScrollY && scrollY < COLLAPSE_THRESHOLD) {
 					isCollapsed = false;
 				}
 
-				// 4. Force uncollapsed when at the very top (scrollY <= 0)
-				if (scrollY <= 0) {
-					isCollapsed = false;
-				}
-
-				// 5. 更新活跃 section
+				if (scrollY <= 0) isCollapsed = false;
 				updateActiveSection(scrollY);
-
 				lastScrollY = scrollY;
 				ticking = false;
 			});
@@ -160,60 +125,26 @@
 		}
 	}
 
-	/**
-	 * Handles document clicks to close the navbar if the click is outside
-	 * the navigation container or the toggler button.
-	 */
 	function handleClickOutside(event: MouseEvent) {
-		if (!browser || !isNavbarOpen) {
-			return;
-		}
-
+		if (!browser || !isNavbarOpen) return;
 		const target = event.target as Node;
-
-		// Check if the click is outside the nav container AND outside the toggler button
-		if (
-			navbarContainer &&
-			!navbarContainer.contains(target) &&
-			navbarToggler &&
-			!navbarToggler.contains(target)
-		) {
+		if (navbarContainer && !navbarContainer.contains(target) && navbarToggler && !navbarToggler.contains(target)) {
 			isNavbarOpen = false;
 		}
 	}
 
-	/**
-	 * Closes the navbar when a link inside it is clicked.
-	 */
-	function closeNavbar() {
-		if (isNavbarOpen) {
-			isNavbarOpen = false;
-		}
-	}
-
-	// Lifecycle hooks
 	onMount(() => {
 		if (browser) {
-			const initialScrollY = window.scrollY;
-
-			// Initialize state based on the initial scroll position
-			isHeaderFixed = initialScrollY > 0;
-			isCollapsed = initialScrollY > COLLAPSE_THRESHOLD;
-
-			// 初始计算活跃 section
-			updateActiveSection(initialScrollY);
-
-			// Attach scroll listener
+			isHeaderFixed = window.scrollY > 0;
+			isCollapsed = window.scrollY > COLLAPSE_THRESHOLD;
+			updateActiveSection(window.scrollY);
 			window.addEventListener('scroll', handleScroll);
-
-			// Attach global click listener for click-outside
 			document.addEventListener('click', handleClickOutside);
 		}
 	});
 
 	onDestroy(() => {
 		if (browser) {
-			// Clean up listeners
 			window.removeEventListener('scroll', handleScroll);
 			document.removeEventListener('click', handleClickOutside);
 		}
@@ -222,16 +153,16 @@
 
 <header
 	id="site-header"
-	class="w-full z-1000 transition-all duration-300 font-sans text-on-background"
-	class:absolute={!isHeaderFixed}
-	class:bg-transparent={!isHeaderFixed}
-	class:fixed={isHeaderFixed}
-	class:top-0={isHeaderFixed}
-	class:bg-surface-deepest={isHeaderFixed}
-	class:shadow-lg={isHeaderFixed}
-	style:backdrop-filter={isHeaderFixed ? 'blur(8px)' : 'none'}
-	class:h-16={!isHeaderFixed || (isHeaderFixed && !isCollapsed)}
-	class:h-12={isHeaderFixed && isCollapsed}
+	class="w-full z-[1000] transition-all duration-300 font-sans text-on-background"
+	class:absolute={!isHeaderFixed && !isAboutUs}
+	class:fixed={isHeaderFixed || isAboutUs}
+	class:top-0={isHeaderFixed || isAboutUs}
+	class:bg-surface-deepest={isHeaderFixed || isAboutUs}
+	class:bg-transparent={!isHeaderFixed && !isAboutUs}
+	class:shadow-lg={isHeaderFixed || isAboutUs}
+	style:backdrop-filter={isHeaderFixed || isAboutUs ? 'blur(8px)' : 'none'}
+	class:h-16={!isHeaderFixed || (isHeaderFixed && !isCollapsed) || (isAboutUs && !isCollapsed)}
+	class:h-12={isCollapsed && (isHeaderFixed || isAboutUs)}
 >
 	<div class="container mx-auto px-6 lg:px-12 h-full flex items-center justify-between">
 		<div class="flex items-center h-full">
@@ -258,9 +189,10 @@
 							<a
 								href={item.href}
 								onclick={(e) => handleNavClick(e, item)}
-								class="mx-8 flex py-4 text-title text-on-background group-hover:text-primary lg:mx-3
-								lg:mr-3 lg:inline-flex lg:px-0 lg:py-6 {item.href === currentActive ? 'text-primary' : ''}"
-								class:active={item.href === currentActive}
+								class="mx-8 flex py-4 text-title text-on-background group-hover:text-primary lg:mx-3 lg:mr-3 lg:inline-flex lg:px-0 lg:py-6 {currentActive ===
+								item.href
+									? 'text-primary'
+									: ''}"
 							>
 								{item.name}
 							</a>
@@ -271,17 +203,17 @@
 		</div>
 
 		<div class="flex flex-row items-center gap-4">
-			<!-- <ThemeSwitcher /> -->
 			<a
 				href="#contact-us"
 				onclick={(e) =>
 					handleNavClick(e, { name: 'Contact', href: '#contact-us', isInternal: true })}
-				class="inline-flex items-center justify-center h-9 grow rounded-lg px-8 text-on-background text-sm font-medium text-nowrap shadow-sm hover:bg-primary/90 active:bg-primary/80 focus:outline-transparent focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solar-500 focus-visible:ring-offset-2 disabled:bg-surface-container-highest disabled:text-on-surface disabled:cursor-not-allowed disabled:opacity-30 transition-all"
+				class="inline-flex items-center justify-center h-9 grow rounded-lg px-8 text-on-background text-sm font-medium text-nowrap shadow-sm hover:bg-primary/90 active:bg-primary/80 transition-all"
 				style="background-image: linear-gradient(to right, #1342FF, #0411A0);"
 			>
 				Contact
 			</a>
 			<button
+				bind:this={navbarToggler}
 				id="navbarToggler"
 				aria-label="Toggle Navigation"
 				onclick={() => (isNavbarOpen = !isNavbarOpen)}
