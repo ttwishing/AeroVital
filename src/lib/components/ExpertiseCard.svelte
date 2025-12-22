@@ -20,8 +20,8 @@
            transition-all duration-500 ease-out cursor-pointer
            hover:bg-surface-highest hover:shadow-xl hover:-translate-y-1 h-full"
 >
-	<div class="w-full flex items-center justify-center aspect-4/3 shrink-0">
-		<img src={expertise.icon} alt={expertise.title} class="w-full h-full object-cover" />
+	<div class="w-full flex items-center justify-center aspect-2/1 shrink-0 bg-[#1F2531]">
+		<img src={expertise.icon} alt={expertise.title} class="w-50 h-50 object-cover" />
 	</div>
 
 	<div class="p-5 flex flex-col grow">

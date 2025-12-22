@@ -37,8 +37,8 @@
 		labels: ['Traditional Tractor', 'AeroVital U60'], // X 轴（方案名称）
 		datasets: [
 			{
-				label: 'Time to Complete: ',
-				data: [14, 4], // Y 轴（小时数）
+				label: 'Hectares per Hour: ',
+				data: [5, 20], // Y 轴（小时数）
 				backgroundColor: [
 					'rgba(111, 136, 177, 0.8)', // 方案 A: 红色
 					'rgba(16, 185, 129, 1)' // 方案 B: 绿色
@@ -92,13 +92,38 @@
 				title: { display: false, text: 'Plan' },
 				beginAtZero: true,
 				barPercentage: 0.2, // 柱子占据其类别宽度的 60%
-				categoryPercentage: 0.8 // 类别宽度占据可用空间的 80% (可选，但推荐)
+				categoryPercentage: 0.8, // 类别宽度占据可用空间的 80% (可选，但推荐)
+				ticks: {
+                	color: 'rgba(255, 255, 255, 0.7)', // 浅白色，适合深色背景
+                	font: { size: 12 }
+            	},
+				grid: {
+                	display: true,
+                	color: 'rgba(255, 255, 255, 0.1)', // 非常淡的白色线条
+                	drawTicks: true // 是否显示突出的小刻度线
+            	},
+				border: {
+               		color: 'rgba(255, 255, 255, 0.2)',
+                	width: 1
+            	}
 			},
 			y: {
-				title: { display: true, text: 'Hours' },
+				title: { display: true, text: 'Ha/Hr', color: 'rgba(255, 255, 255, 0.6)'},
 				beginAtZero: true,
-				max: 14,
-				ticks: { stepSize: 2 }
+				max: 20,
+				ticks: {
+                	color: 'rgba(255, 255, 255, 0.7)', // 浅白色，适合深色背景
+                	font: { size: 12 }
+            	},
+				grid: {
+                	display: true,
+                	color: 'rgba(255, 255, 255, 0.1)', // 非常淡的白色线条
+                	drawTicks: true // 是否显示突出的小刻度线
+            	},
+				border: {
+               		color: 'rgba(255, 255, 255, 0.2)',
+                	width: 1
+            	}
 			}
 		}
 	};
@@ -132,8 +157,7 @@
 <div class="p-6 mx-auto text-left w-full h-full flex flex-col" use:observe={observeOptions}>
 	<!-- 头部文本：占据所需空间 -->
 	<div>
-		<h3 class="text-title">Efficiency Analysis: Tractor vs AeroVital U60</h3>
-		<p class="text-sm mt-3">Time required to spray 135 acres (John Lemon Farm Data)</p>
+		<h3 class="text-title text-center">Efficiency (Hectares per Hour)</h3>
 	</div>
 
 	<!-- 图表容器：使用 mt-6 创建间距，使用 flex-grow 占据剩余高度 -->

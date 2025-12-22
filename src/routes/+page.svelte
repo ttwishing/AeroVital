@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
-	import ComparisonChart from '$lib/components/ComparisonChart.svelte';
+	import ComparisonChartEfficiency from '$lib/components/ComparisonChartEfficiency.svelte';
+	import ComparisonChartTime from '$lib/components/ComparisonChartTime.svelte';
 	import ExpertiseCard, { type Expertise } from '$lib/components/ExpertiseCard.svelte';
 	import ProductCard, { type Product } from '$lib/components/ProductCard.svelte';
 	import ArrowRight from '@lucide/svelte/icons/arrow-right';
@@ -127,7 +128,7 @@
 		<p class="mt-3">
 			AeroVital applies its sovereign capabilities across multiple critical sectors.
 		</p>
-		<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+		<div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
 			{#each expertises as expertise}
 				<ExpertiseCard {expertise} />
 			{/each}
@@ -137,41 +138,16 @@
 
 <section id="success-stories" class="bg-surface-low">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12">
-		<h2 class="text-headline">Case Study Showcase</h2>
-		<div class="flex flex-col lg:flex-row border-2 border-outline/30 rounded-2xl mt-6">
-			<div
-				class="w-full bg-surface-deep lg:w-1/2 p-6 rounded-tl-2xl rounded-tr-2xl rounded-bl-none round-br-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-tr-none lg:round-br-none text-left space-y-6"
-			>
-				<h3 class="text-title">John Lemon Farm: Transforming Orchard Efficiency</h3>
-				<p class="text-sm">
-					Located in Gruyere, VIC, this 135-acre lemon orchard faced rising labor costs and soil
-					compaction issues. AeroVital implemented an automated U60 drone system to replace
-					traditional tractors.
-				</p>
+		<h2 class="text-headline">The Business Case</h2>
+		<p class="mt-3">John Lemon Farm: Transforming Orchard Efficiency</p>
 
-				<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-6">
-					<div class="border-l-4 border-green pl-4">
-						<p class="text-title lg:text-headline font-semibold text-green">300%</p>
-						<p class="text-sm">Efficiency Gain</p>
-					</div>
-					<div class="border-l-4 border-green pl-4">
-						<p class="text-title lg:text-headline font-semibold text-green">~65k</p>
-						<p class="text-sm">Initial Investment (AUD)</p>
-					</div>
-					<div class="border-l-4 border-green pl-4">
-						<p class="text-title lg:text-headline font-semibold text-green">4 Hrs</p>
-						<p class="text-sm">Full Farm Spray Time</p>
-					</div>
-					<div class="border-l-4 border-green pl-4">
-						<p class="text-title lg:text-headline font-semibold text-green">0</p>
-						<p class="text-sm">Soil Compaction</p>
-					</div>
-				</div>
+		<div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+			<div class="bg-[#374251] rounded-2xl">
+				<ComparisonChartTime />
 			</div>
-			<div
-				class="w-full lg:w-1/2 bg-[#374251] rounded-br-2xl rounded-bl-2xl round-tl-none rounded-tr-none lg:rounded-tl-none lg:rounded-bl-none lg:rounded-tr-2xl lg:round-br-2xl"
-			>
-				<ComparisonChart />
+
+			<div class="bg-[#374251] rounded-2xl">
+				<ComparisonChartEfficiency />
 			</div>
 		</div>
 	</div>
