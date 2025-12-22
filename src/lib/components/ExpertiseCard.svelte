@@ -25,12 +25,12 @@
 	</div>
 
 	<div class="p-5 flex flex-col grow">
-		<div class="grow">
+		<div class="grow mb-6">
 			<h3 class="mb-6 text-title text-left">{expertise.title}</h3>
 			<p class="text-left mb-3 text-sm">
 				{expertise.subtitle}
 			</p>
-			<ul class="mb-6">
+			<ul>
 				{#each Object.entries(expertise.features) as [key, value]}
 					<li class="flex flex-row items-start gap-3 mb-1">
 						<Check class="size-4 bold text-primary mt-0.5 shrink-0" />
@@ -42,7 +42,6 @@
 				{/each}
 			</ul>
 		</div>
-
 		<div class="flex justify-between items-center">
 			<span class="text-muted text-xs"><strong>Key Capability</strong></span>
 			<div class="rounded-2xl bg-green/20 px-2 py-1 text-green font-bold text-xs">
