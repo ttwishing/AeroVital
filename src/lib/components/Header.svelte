@@ -18,9 +18,9 @@
 
 	// Navigation links data - 统一语义：内部用 #xx，外部用 /xx，标记 isInternal
 	const navItems = [
-    	{ name: 'Solutions', href: '/#solutions', isInternal: true },
-    	{ name: 'Success Stories', href: '/#success-stories', isInternal: true },
-    	{ name: 'Technology', href: '/#technology', isInternal: true },
+    	{ name: 'Solutions Ecosystem', href: '/#solutions', isInternal: true },
+    	{ name: 'Product Specs', href: '/#products', isInternal: true },
+    	{ name: 'Data & ROI', href: '/#data', isInternal: true },
     	{ name: 'About us', href: '/about-us', isInternal: false }
 	];
 

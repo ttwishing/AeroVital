@@ -136,7 +136,19 @@
 	</div>
 </section>
 
-<section id="success-stories" class="bg-surface-low">
+<section id="products" class="">
+	<div class="container mx-auto text-center px-6 lg:px-12 py-12">
+		<h2 class="text-headline mt-6">Core Technology Platforms</h2>
+		<p class="mt-3">Robust, IP67-rated aerial systems designed for high-intensity work.</p>
+		<div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+			{#each products as product}
+				<ProductCard {product} />
+			{/each}
+		</div>
+	</div>
+</section>
+
+<section id="data" class="bg-surface-low">
 	<div class="container mx-auto text-center px-6 lg:px-12 py-12">
 		<h2 class="text-headline">The Business Case</h2>
 		<p class="mt-3">John Lemon Farm: Transforming Orchard Efficiency</p>
@@ -149,18 +161,6 @@
 			<div class="bg-[#374251] rounded-2xl">
 				<ComparisonChartEfficiency />
 			</div>
-		</div>
-	</div>
-</section>
-
-<section id="technology" class="">
-	<div class="container mx-auto text-center px-6 lg:px-12 py-12">
-		<h2 class="text-headline mt-6">Core Technology Platforms</h2>
-		<p class="mt-3">Robust, IP67-rated aerial systems designed for high-intensity work.</p>
-		<div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-			{#each products as product}
-				<ProductCard {product} />
-			{/each}
 		</div>
 	</div>
 </section>
