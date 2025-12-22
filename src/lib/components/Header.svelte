@@ -18,10 +18,10 @@
 
 	// Navigation links data - 统一语义：内部用 #xx，外部用 /xx，标记 isInternal
 	const navItems = [
-		{ name: 'Solutions', href: '#solutions', isInternal: true },
-		{ name: 'Success Stories', href: '#success-stories', isInternal: true },
-		{ name: 'Technology', href: '#technology', isInternal: true },
-		{ name: 'About us', href: '/about-us', isInternal: false }
+    	{ name: 'Solutions', href: '/#solutions', isInternal: true },
+    	{ name: 'Success Stories', href: '/#success-stories', isInternal: true },
+    	{ name: 'Technology', href: '/#technology', isInternal: true },
+    	{ name: 'About us', href: '/about-us', isInternal: false }
 	];
 
 	// Scroll handling variables
@@ -56,60 +56,66 @@
 	 * @param item - 导航项
 	 */
 	async function handleNavClick(event: MouseEvent, item: (typeof navItems)[0]) {
-		if (!browser) return;
-		event.preventDefault(); // 阻止默认锚点跳转
-		closeNavbar(); // 关闭移动导航
+    if (!browser) return;
+    
+    if (item.isInternal) {
+        event.preventDefault(); 
+        closeNavbar();
 
-		if (item.isInternal) {
-			// 内部锚点链接（主页 sections）
-			const cleanHref = item.href; // 已 #xx
-			const currentPath = window.location.pathname;
+        // 提取 ID：从 "/#solutions" 提取出 "#solutions"
+        const anchorId = item.href.includes('#') ? '#' + item.href.split('#')[1] : item.href;
+        const currentPath = window.location.pathname;
 
-			if (currentPath === '/') {
-				// 已在主页：手动滚动，不更新 URL hash
-				await scrollToTarget(cleanHref);
-			} else {
-				// 非主页：导航到主页（无 hash）+ 手动滚动
-				await goto('/');
-				await tick(); // 确保 DOM 渲染完成
-				await scrollToTarget(cleanHref);
-			}
-		} else {
-			// 页面链接（如 /about-us）：使用 goto 导航
-			goto(item.href);
-		}
-	}
+        if (currentPath === '/') {
+            await scrollToTarget(anchorId);
+        } else {
+            // 如果不在首页，先跳回首页
+            await goto('/');
+            // 这里的 tick 很重要，等待首页挂载后再滚动
+            await tick();
+            setTimeout(() => scrollToTarget(anchorId), 100); // 给一点点延迟确保渲染
+        }
+    } else {
+        // 正常页面跳转不需要 preventDefault
+        isNavbarOpen = false;
+    }
+}
 
 	/**
 	 * 计算当前活跃锚点：遍历内部锚点，检查滚动位置是否在 section 范围内。
 	 */
 	function updateActiveSection(scrollY: number): void {
-		if (!browser) return;
-		let newActive = '';
-		for (const item of navItems) {
-			if (!item.isInternal) continue; // 只处理内部锚点
+    if (!browser) return;
+    let newActive = '';
+    
+    // 如果在首页，才计算锚点高亮
+    if (window.location.pathname === '/') {
+        for (const item of navItems) {
+            if (!item.isInternal) continue;
+            
+            // 从 "/#solutions" 提取 "#solutions" 用作选择器
+            const selector = '#' + item.href.split('#')[1];
+            const targetElement = document.querySelector(selector) as HTMLElement;
+            
+            if (targetElement) {
+                const elementTop = targetElement.offsetTop - HEADER_OFFSET - 50; // 稍微提前一点激活
+                const elementBottom = targetElement.offsetTop + targetElement.offsetHeight - HEADER_OFFSET;
 
-			const selector = item.href; // 已 #xx
-			const targetElement = document.querySelector(selector) as HTMLElement;
-			if (!targetElement) continue;
+                if (scrollY >= elementTop && scrollY < elementBottom) {
+                    newActive = item.href; // 匹配为 "/#solutions"
+                    break;
+                }
+            }
+        }
+    } else {
+        // 如果在 about-us 页面，直接激活 About us 项
+        const currentPath = window.location.pathname;
+        const activeItem = navItems.find(i => i.href === currentPath);
+        if (activeItem) newActive = activeItem.href;
+    }
 
-			const elementTop = targetElement.offsetTop - HEADER_OFFSET;
-			const elementBottom = targetElement.offsetTop + targetElement.offsetHeight - HEADER_OFFSET;
-
-			if (scrollY >= elementTop && scrollY < elementBottom) {
-				newActive = item.href; // 保持原 href 格式 '#solutions' 用于匹配
-				break; // 只匹配第一个
-			}
-		}
-
-		// 如果没有匹配到主页 section，且当前在 about-us 页面，激活 'About us'
-		if (newActive === '' && window.location.pathname === '/about-us') {
-			const aboutItem = navItems.find((i) => i.name === 'About us');
-			newActive = aboutItem?.href || '';
-		}
-
-		currentActive = newActive;
-	}
+    currentActive = newActive;
+}
 
 	/**
 	 * Handles the scroll event using requestAnimationFrame for performance.
