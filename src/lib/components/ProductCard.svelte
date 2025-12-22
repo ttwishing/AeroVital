@@ -41,11 +41,11 @@
 		<p class="mb-6">{product.descrition}</p>
 		<div class="grid grid-cols-2 gap-3 mb-6">
 			{#each Object.entries(product.main) as [key, value]}
-				<div class="px-3 py-2 bg-white/2 border border-white/3 rounded-lg text-left">
+				<div class="px-3 py-3 bg-white/2 border border-white/3 rounded-lg text-left space-y-2">
 					<p class="text-sm">
 						{key}
 					</p>
-					<span class="text-title font-bold">{value}</span>
+					<div class="text-title font-bold">{value}</div>
 				</div>
 			{/each}
 		</div>
