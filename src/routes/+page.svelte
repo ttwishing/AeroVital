@@ -33,7 +33,7 @@
 		},
 		{
 			title: 'Forestry & Environment',
-			icon: '/images/icon_feature_remote_inspection.png',
+			icon: '/images/icon_feature_forestry_environment.png',
 			subtitle:
 				'Scalable solutions for large-scale environmental management and rehabilitation.',
 			features: {
