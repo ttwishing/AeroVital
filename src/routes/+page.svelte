@@ -98,7 +98,6 @@
 		}
 	];
 </script>
-
 <section class="h-[520px] w-full z-800 relative">
 	<div
 		class="relative h-full w-full pt-28 text-center bg-center bg-no-repeat bg-size-[auto_800px] max-xl:pt-18 max-xl:bg-cover bg-[url('/images/banner.webp')] max-md:bg-[url('/images/banner-mobile.webp')]
