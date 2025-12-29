@@ -30,7 +30,7 @@
            hover:bg-surface-highest hover:shadow-xl hover:-translate-y-1 h-full"
 >
 	<div class="w-full flex items-center justify-center aspect-2/1 shrink-0 bg-[#141a4d]">
-		<img src={expertise.icon} alt={expertise.title} class="w-65 h-65 object-cover" />
+		<img src={expertise.icon} alt={expertise.title} class="w-65 h-65 object-cover" loading="lazy" />
 	</div>
 
 	<div class="p-5 flex flex-col grow">

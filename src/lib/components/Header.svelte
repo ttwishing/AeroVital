@@ -172,7 +172,7 @@
 					aria-label="AeroVital Logo"
 					class="text-title tracking-tight text-on-surface flex flex-row items-center"
 				>
-					<img src="/logo.webp" alt="AeroVital" class="h-7 w-auto" />
+					<img src="/logo.webp" alt="AeroVital" class="h-7 w-75" />
 				</a>
 			</div>
 
