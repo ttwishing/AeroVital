@@ -9,7 +9,7 @@
 	export const expertises: Expertise[] = [
 		{
 			title: 'Smart Agriculture',
-			icon: '/images/icon_feature_smart_agriculture.png',
+			icon: '/images/icon_feature_smart_agriculture.webp',
 			subtitle:
 				'The core of our current offering. Leveraging the U60\'s heavy-lift capability for broadacre and orchard applications.',
 			features: {
@@ -21,7 +21,7 @@
 		},
 		{
 			title: 'Remote Inspection',
-			icon: '/images/icon_feature_remote_inspection.png',
+			icon: '/images/icon_feature_remote_inspection.webp',
 			subtitle:
 				'High-resolution asset digitization and monitoring. Keeping personnel safe while gathering critical data.',
 			features: {
@@ -33,7 +33,7 @@
 		},
 		{
 			title: 'Forestry & Environment',
-			icon: '/images/icon_feature_forestry_environment.png',
+			icon: '/images/icon_feature_forestry_environment.webp',
 			subtitle:
 				'Scalable solutions for large-scale environmental management and rehabilitation.',
 			features: {
@@ -46,7 +46,7 @@
 		},
 		{
 			title: 'Forestry & Fire',
-			icon: '/images/icon_feature_forestry_fire.png',
+			icon: '/images/icon_feature_forestry_fire.webp',
 			subtitle:
 				'Rapid response capabilities for emergency services and private land protection.',
 			features: {
@@ -61,7 +61,7 @@
 
 	export const products: Product[] = [
 		{
-			img: '/images/aerovital_u60.png',
+			img: '/images/aerovital_u60.webp',
 			name: 'AeroVital U60',
 			descrition:
 				'Heavy-Lift Agricultural & Industrial Platform',
@@ -79,7 +79,7 @@
 			}
 		},
 		{
-			img: '/images/aerovital_u40.png',
+			img: '/images/aerovital_u40.webp',
 			name: 'AeroVital U40',
 			descrition:
 				'Agile Precision Platform',
@@ -101,7 +101,7 @@
 
 <section class="h-[520px] w-full z-800 relative">
 	<div
-		class="relative h-full w-full pt-28 text-center bg-center bg-no-repeat bg-size-[auto_800px] max-xl:pt-18 max-xl:bg-cover bg-[url('/images/banner.png')] max-md:bg-[url('/images/banner-mobile.png')]
+		class="relative h-full w-full pt-28 text-center bg-center bg-no-repeat bg-size-[auto_800px] max-xl:pt-18 max-xl:bg-cover bg-[url('/images/banner.webp')] max-md:bg-[url('/images/banner-mobile.webp')]
 	"
 	>
 		<div

@@ -23,7 +23,7 @@
 					<div class="w-full lg:flex-1 mb-6">
 						<h2 class="text-title mb-6">About AeroVital Solutions</h2>
 						<p class="mb-3 text-sm">
-							AeroVital Solutions Pty Ltd (ACN 651 431 748) is an Australian proprietary company
+							AEROVITAL SOLUTIONS PTY LTD (ACN 651 431 748) is an Australian proprietary company
 							dedicated to bringing advanced aerial automation to the local market.
 						</p>
 						<p class="text-sm">
@@ -39,7 +39,7 @@
 									<img src={Group} class="size-5 text-success" alt="Group" />
 								</div>
 								<div>
-									<p class="font-bold text-on-background">Yin Zhao &amp; Yongmin Wang</p>
+									<p class="font-bold text-on-background">Wang Dayuan</p>
 									<p class="text-sm">Directors</p>
 									<p class="text-xs mt-1">Strategic Direction &amp; Operations</p>
 								</div>
@@ -67,7 +67,7 @@
 								<div>
 									<p class="text-sm uppercase tracking-wider">Head Office</p>
 									<p class="text-on-background">
-										Level 1, 50 Commercial Road<br />Newstead, QLD 4006
+										209 Union Road, Ascot Vale VIC 3032, Australia
 									</p>
 								</div>
 							</div>
@@ -105,7 +105,7 @@
 			<div class="container relative z-10 px-5 mx-auto sm:px-7">
 				<div class="py-5 text-center">
 					<p class="text-sm">
-						© {currentYear} AeroVital Solutions Pty Ltd. All Rights Reserved.
+						© {currentYear} AEROVITAL SOLUTIONS PTY LTD. All Rights Reserved.
 					</p>
 				</div>
 			</div>

@@ -81,7 +81,7 @@ export const load: LayoutServerLoad = ({ url }) => {
 		'@type': 'Organization',
 		name: baseMetaTags.site_name,
 		url: finalSiteUrl, // 👈 使用规范化的根 URL
-		logo: `${siteBaseUrl}logo.png`
+		logo: `${siteBaseUrl}logo.webp`
 	};
 
 	const schema = [webSiteSchema, organizationSchema];
