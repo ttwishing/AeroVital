@@ -79,11 +79,11 @@
 								</div>
 							</div>
 							<div class="flex items-start">
-								<a href="tel:1300237684825" class="flex items-start">
+								<a href="tel:0415645715" class="flex items-start">
 									<img src={Ring} class="mt-1 mr-4 text-success size-4" alt="Phone" />
 									<div>
 										<p class="text-sm uppercase tracking-wider">Support</p>
-										<p class="text-on-background">1300 AERO VITAL</p>
+										<p class="text-on-background">0415645715</p>
 									</div>
 								</a>
 							</div>
